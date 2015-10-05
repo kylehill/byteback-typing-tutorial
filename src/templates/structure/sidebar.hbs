@@ -1,0 +1,17 @@
+<div class="sidebar-container">
+  {{#each sections}}
+  <div class="sidebar-section">
+    {{#if title}}
+    <div class="sidebar-sectiontitle">{{title}}</div>
+    {{/if}}
+    
+    {{#each pages}}
+    <div class="sidebar-page">
+      <a class="sidebar-pagelink" href="./{{ hash }}">
+        {{title}}
+      </a>
+    </div>
+    {{/each}}
+  </div>
+  {{/each}}
+</div>
