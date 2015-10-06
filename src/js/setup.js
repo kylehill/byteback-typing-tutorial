@@ -15,44 +15,48 @@ const getPage = function(hash, lessonsObject) {
 const pageRoute = function(context, next) {
   Mousetrap.reset()
 
-  var page = getPage(context.params.hash, App.lessons)
+  const page = getPage(context.params.hash, App.lessons)
   if (!page || !page.template) { return next() }
 
   $("main").html(App.templates.page)
   $(".page-container").html(App.templates[page.template])
   
-  if (page.lesson) {
-    let cb = cueboard(".cueboard-container", {
-      initialKeyState: "inactive",
-      keyState: page.keys || {}
-    })
-
-    let tb = typebox(".typebox-container", {
-      string: page.text
-    })
-
-    const state = tb.state()
-    if (state.next) {
-      cb.changeState("next", state.next)
-    }
-    
-    Mousetrap.bind(keys, function(evt, key){
-      const result = tb.applyCharacter(key)
-      
-      if (result.accurate) {
-        cb.changeState("active", key)
-        if (result.next) {
-          cb.changeState("next", result.next)
-        }
-      }
-
-      if (evt.altKey || evt.metaKey || evt.ctrlKey) {
-        return
-      }
-
-      return false
-    })
+  if (!page.lesson) {
+    return
   }
+  
+  let cb = cueboard(".cueboard-container", {
+    initialKeyState: "inactive",
+    keyState: page.keys || {}
+  })
+
+  let tb = typebox(".typebox-container", {
+    string: page.text
+  })
+
+  const state = tb.state()
+  if (state.next) {
+    cb.changeState("next", state.next)
+  }
+  
+  Mousetrap.bind(keys, function(evt, key){
+    const result = tb.applyCharacter(key)
+
+    if (result.accurate) {
+      cb.changeState("active", key)
+      
+      if (result.next) {
+        cb.changeState("next", result.next)
+      }
+    }
+
+    if (evt.altKey || evt.metaKey || evt.ctrlKey) {
+      return
+    }
+
+    return false
+  })
+  
 }
 
 const loadIntro = function(context, next) {
