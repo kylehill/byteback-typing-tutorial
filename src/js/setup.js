@@ -12,11 +12,13 @@ const pageRoute = function(context, next) {
   $("main").html(App.templates.page)
   $(".page-container").html(App.templates[page.template])
 
-  console.log(page)
-    
   if (page.lesson) {
     var cb = cueboard(".cueboard-container", {
       initialKeyState: "inactive"
+    })
+
+    var tb = typebox(".typebox-container", {
+      string: page.text
     })
   }
 }

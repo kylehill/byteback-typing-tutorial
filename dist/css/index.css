@@ -1,2 +1,19 @@
 body {
   color: #333333; }
+
+.typebox {
+  border: solid 2px #333333;
+  width: 50%;
+  padding: 10px;
+  font-size: 24px; }
+
+.typebox-word {
+  display: inline-block; }
+
+.typebox-active {
+  color: red;
+  border-bottom: solid 2px red; }
+
+.cueboard-keystate-inactive {
+  border-color: #acacac;
+  color: #acacac; }

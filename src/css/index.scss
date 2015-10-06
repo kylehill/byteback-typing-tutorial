@@ -1,5 +1,28 @@
+$color_typebox_active: rgb(255, 0, 0);
 $color_text: rgb(51, 51, 51);
+$color_inactive_key: rgb(172, 172, 172);
 
 body {
   color: $color_text;
+}
+
+.typebox {
+  border: solid 2px $color_text;
+  width: 50%;
+  padding: 10px;
+  font-size: 24px;
+}
+
+.typebox-word {
+  display: inline-block;
+}
+
+.typebox-active {
+  color: $color_typebox_active;
+  border-bottom: solid 2px $color_typebox_active;
+}
+
+.cueboard-keystate-inactive {
+  border-color: $color_inactive_key;
+  color: $color_inactive_key;
 }
