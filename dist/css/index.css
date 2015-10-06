@@ -17,3 +17,10 @@ body {
 .cueboard-keystate-inactive {
   border-color: #acacac;
   color: #acacac; }
+
+.cueboard-keystate-active {
+  background: #d9f7ff; }
+
+.cueboard-keystate-next {
+  background: red;
+  color: white; }
