@@ -31,40 +31,96 @@ var pageRoute = function pageRoute(context, next) {
   $("main").html(App.templates.page);
   $(".page-container").html(App.templates[page.template]);
 
-  if (page.lesson) {
-    (function () {
-      var cb = cueboard(".cueboard-container", {
-        initialKeyState: "inactive",
-        keyState: page.keys || {}
-      });
+  if (!page.lesson) {
+    return;
+  }
 
-      var tb = typebox(".typebox-container", {
-        string: page.text
-      });
+  var cb = cueboard(".cueboard-container", {
+    initialKeyState: "inactive",
+    keyState: page.keys || {}
+  });
 
-      var state = tb.state();
-      if (state.next) {
-        cb.changeState("next", state.next);
+  var tb = typebox(".typebox-container", {
+    string: page.text
+  });
+
+  var sc = scorecenter(".scorecenter-container", {
+    refresh: 250,
+    metrics: [{
+      name: "characters",
+      type: "counter"
+    }, {
+      name: "errors",
+      type: "counter"
+    }, {
+      name: "clock",
+      type: "timer"
+    }, {
+      name: "words",
+      type: "counter"
+    }],
+    displays: [{
+      title: "Characters",
+      metric: "characters"
+    }, {
+      title: "Errors",
+      metric: "errors"
+    }, {
+      title: "Accuracy",
+      format: function format(value) {
+        return Math.round(value * 1000) / 10 + "%";
+      },
+      value: function value(map) {
+        var characters = map.characters.displayValue();
+        var errors = map.errors.displayValue();
+        return characters / (characters + errors || 1);
+      }
+    }, {
+      title: "Words Per Minute",
+      format: function format(value) {
+        return Math.round(value * 10) / 10;
+      },
+      value: function value(map) {
+        var words = map.words.displayValue();
+        var clock = map.clock.displayValue();
+
+        return words / ((clock || 1) / 60000);
+      }
+    }]
+  });
+
+  var state = tb.state();
+  if (state.next) {
+    cb.changeState("next", state.next);
+  }
+
+  Mousetrap.bind(keys, function (evt, key) {
+    sc.getMetric("clock").start();
+    var result = tb.applyCharacter(key);
+
+    if (result.accurate === true) {
+      sc.getMetric("characters").increment();
+      cb.changeState("active", key);
+
+      if (result.next) {
+        cb.changeState("next", result.next);
       }
 
-      Mousetrap.bind(keys, function (evt, key) {
-        var result = tb.applyCharacter(key);
+      if (result.next === " " || result.complete) {
+        sc.getMetric("words").increment();
+      }
+    }
 
-        if (result.accurate) {
-          cb.changeState("active", key);
-          if (result.next) {
-            cb.changeState("next", result.next);
-          }
-        }
+    if (result.accurate === false) {
+      sc.getMetric("errors").increment();
+    }
 
-        if (evt.altKey || evt.metaKey || evt.ctrlKey) {
-          return;
-        }
+    if (result.complete) {
+      sc.getMetric("clock").stop();
+    }
 
-        return false;
-      });
-    })();
-  }
+    return evt.altKey || evt.metaKey || evt.ctrlKey;
+  });
 };
 
 var loadIntro = function loadIntro(context, next) {

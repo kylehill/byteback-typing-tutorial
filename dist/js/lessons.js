@@ -30,7 +30,13 @@
         }
       }, {
         title: "Lesson #2",
-        hash: "lesson-2"
+        hash: "lesson-2",
+        template: "lesson-2",
+        lesson: true,
+        text: "j k l ; l j k ; j l j k jk jl j; lk ;j jl kj jk ;j l; kl jl kj j klj kk j lj k klj jk; kkj jlk llj kjj ;k lj jk kj lk jj l kjl",
+        keys: {
+          active: ["J", "K", "L", ";"]
+        }
       }, {
         title: "Lesson #3",
         hash: "lesson-3"
