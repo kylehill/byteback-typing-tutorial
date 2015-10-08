@@ -52,6 +52,7 @@
           },
           {
             title: "Lesson #3",
+            fullTitle: "Lesson #3: Both Hands, Home Row",
             hash: "lesson-3",
             template: "lesson-3",
             lesson: true,
@@ -62,6 +63,7 @@
           },
           {
             title: "Lesson #4",
+            fullTitle: "Lesson #4: Home Row with G and H",
             hash: "lesson-4",
             template: "lesson-4",
             lesson: true,
@@ -73,6 +75,7 @@
           },
           {
             title: "Lesson #5",
+            fullTitle: "Lesson #5: E and I",
             hash: "lesson-5",
             template: "lesson-5",
             lesson: true,
@@ -84,6 +87,7 @@
           },
           {
             title: "Lesson #6",
+            fullTitle: "Lesson #6: R and U",
             hash: "lesson-6",
             template: "lesson-6",
             lesson: true,
@@ -95,6 +99,7 @@
           },
           {
             title: "Lesson #7",
+            fullTitle: "Lesson #7: T and Y",
             hash: "lesson-7",
             template: "lesson-7",
             lesson: true,
@@ -106,6 +111,7 @@
           },
           {
             title: "Lesson #8",
+            fullTitle: "Lesson #8: B and N",
             hash: "lesson-8",
             template: "lesson-8",
             lesson: true,
@@ -117,6 +123,7 @@
           },
           {
             title: "Lesson #9",
+            fullTitle: "Lesson #9: V and M",
             hash: "lesson-9",
             template: "lesson-9",
             lesson: true,
@@ -128,6 +135,7 @@
           },
           {
             title: "Lesson #10",
+            fullTitle: "Lesson #10: W and O",
             hash: "lesson-10",
             template: "lesson-10",
             lesson: true,
@@ -139,6 +147,7 @@
           },
           {
             title: "Lesson #11",
+            fullTitle: "Lesson #11: Q and P",
             hash: "lesson-11",
             template: "lesson-11",
             lesson: true,
@@ -150,6 +159,7 @@
           },
           {
             title: "Lesson #12",
+            fullTitle: "Lesson #12: C and ,",
             hash: "lesson-12",
             template: "lesson-12",
             lesson: true,
@@ -161,6 +171,7 @@
           },
           {
             title: "Lesson #13",
+            fullTitle: "Lesson #13: Z, X, and .",
             hash: "lesson-13",
             template: "lesson-13",
             lesson: true,
@@ -172,6 +183,7 @@
           },
           {
             title: "Lesson #14",
+            fullTitle: "Lesson #14: The Shift Key",
             hash: "lesson-14",
             template: "lesson-14",
             lesson: true,
@@ -183,6 +195,7 @@
           },
           {
             title: "Lesson #15",
+            fullTitle: "Lesson #15: ? and !",
             hash: "lesson-15",
             template: "lesson-15",
             lesson: true,
@@ -194,6 +207,7 @@
           },
           {
             title: "Final Test",
+            fullTitle: "Final Test",
             hash: "final-test",
             template: "final-test",
             lesson: true,
@@ -209,6 +223,7 @@
         pages: [
           {
             title: "Lesson #1",
+            fullTitle: "Advanced Lesson #1: ( and )",
             hash: "advanced-lesson-1",
             template: "advanced-lesson-1",
             lesson: true,
@@ -220,6 +235,7 @@
           },
           {
             title: "Lesson #2",
+            fullTitle: "Advanced Lesson #2: ' and \"",
             hash: "advanced-lesson-2",
             template: "advanced-lesson-2",
             lesson: true,
@@ -231,6 +247,7 @@
           },
           {
             title: "Lesson #3",
+            fullTitle: "Advanced Lesson #3: :, -, and /",
             hash: "advanced-lesson-3",
             template: "advanced-lesson-3",
             lesson: true,
