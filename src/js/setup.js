@@ -18,16 +18,30 @@ const pageRoute = function(context, next) {
   const page = getPage(context.params.hash, App.lessons)
   if (!page || !page.template) { return next() }
 
-  $("main").html(App.templates.page)
-  $(".page-container").html(App.templates[page.template])
+  $("main").html(App.templates.page(page))
+  
+  $(".page-content").html(App.templates[page.template](page))
   
   if (!page.lesson) {
     return
   }
-  
-  let cb = cueboard(".cueboard-container", {
+
+  $(".start-exercise-button")
+    .addClass("active")
+    .on("click", function(){
+      $(".page-container").addClass("exercise")
+    })
+
+  cueboard(".instruction-cueboard-container", {
     initialKeyState: "inactive",
     keyState: page.keys || {}
+  })
+  
+  let cb = cueboard(".exercise-cueboard-container", {
+    initialKeyState: "inactive",
+    keyState: {
+      active: page.keys.active || []
+    }
   })
 
   let tb = typebox(".typebox-container", {

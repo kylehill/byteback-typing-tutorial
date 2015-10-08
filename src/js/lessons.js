@@ -22,24 +22,32 @@
             template: "using-the-tutorial",
             lesson: false
           },
+        ]
+      },
+      {
+        pages: [
           {
             title: "Lesson #1",
+            fullTitle: "Lesson #1: Left Hand, Home Row",
             hash: "lesson-1",
             template: "lesson-1",
             lesson: true,
             text: "a s d f s d f f s d as sd ad fs ds sad af sa fa dafa sda dad das afa sfd add sasd df sf saf dds fd ads safd fsd fas sas dafs as fad",
             keys: {
-              active: ["A", "S", "D", "F", "Space"]
+              active: ["A", "S", "D", "F", "Space"],
+              new: ["A", "S", "D", "F", "Space"]
             }
           },
           {
             title: "Lesson #2",
+            fullTitle: "Lesson #2: Right Hand, Home Row",
             hash: "lesson-2",
             template: "lesson-2",
             lesson: true,
             text: "j k l ; l j k ; j l j k jk jl j; lk ;j jl kj jk ;j l; kl jl kj j klj kk j lj k klj jk; kkj jlk llj kjj ;k lj jk kj lk jj l kjl",
             keys: {
-              active: ["J", "K", "L", ";", "Space"]
+              active: ["J", "K", "L", ";", "Space"],
+              new: ["J", "K", "L", ";"]
             }
           },
           {
@@ -59,7 +67,8 @@
             lesson: true,
             text: "f g fg gf j h jh hj had jag ask gag sagas gash hag klash flags add glad lag salad lash falls lads gas flask; shall sad dash halk glass",
             keys: {
-              active: ["G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
+              active: ["G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
+              new: ["G", "H"]
             }
           },
           {
@@ -69,7 +78,8 @@
             lesson: true,
             text: "d de ed de k ki ik ki fed sea hike fade flik jedi flies; skies dial isle seed file skied slide likes jails deal shield hide glide shells figs",
             keys: {
-              active: ["E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
+              active: ["E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
+              new: ["E", "I"]
             }
           },
           {
@@ -79,7 +89,8 @@
             lesson: true,
             text: "j u ju uj f r r f fr free juries real lull judge read fear shred dusk rash hush grease rake grid fudge hush fired deaf duke rude fired",
             keys: {
-              active: ["R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
+              active: ["R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
+              new: ["R", "U"]
             }
           },
           {
@@ -89,7 +100,8 @@
             lesson: true,
             text: "f ft ftg j jy jyh retreat fly just kite year stay treat yikes hurt hurry they style yak dart health great take later litter haste justify",
             keys: {
-              active: ["T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
+              active: ["T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
+              new: ["T", "Y"]
             }
           },
           {
@@ -99,7 +111,8 @@
             lesson: true,
             text: "j n jn nj f b fb bf find big bury near jab junk burn brink nab bane nasal blind enable bring jab blend fans bandit nifty baffled banana",
             keys: {
-              active: ["B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
+              active: ["B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
+              new: ["B", "N"]
             }
           },
           {
@@ -109,7 +122,8 @@
             lesson: true,
             text: "f v fv fv j m jm jam vat man vase made mind venus move steam very ever middle veil viking never valve rhyme vanity hive",
             keys: {
-              active: ["V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
+              active: ["V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
+              new: ["V", "M"]
             }
           },
           {
@@ -119,7 +133,8 @@
             lesson: true,
             text: "s sw ws l lo ol lol work dock weak toy row lord mow worth newt song few lower wind howl web body write low frog jaw",
             keys: {
-              active: ["W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
+              active: ["W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
+              new: ["W", "O"]
             }
           },
           {
@@ -129,7 +144,8 @@
             lesson: true,
             text: "a q aq aq ; ;p ;p play paper quit pale quin quail please quietly pink queen quip cape quart pantry equal please post quill",
             keys: {
-              active: ["Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
+              active: ["Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
+              new: ["Q", "P"]
             }
           },
           {
@@ -139,7 +155,8 @@
             lesson: true,
             text: "d c dc cd k , k, ,k cat, cow, corn, city, comma; the black car cast quickly, counting, trace, occur space, cold, act, chat, and catch",
             keys: {
-              active: ["C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
+              active: ["C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
+              new: ["C", ","]
             }
           },
           {
@@ -149,7 +166,8 @@
             lesson: true,
             text: "a az za s x sx l l. .l tax. zap. extra exact. plaza axle waltz. f.o.x. pizza text. dizzy. exit taxi crazy. zoo exam. next prize",
             keys: {
-              active: ["Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
+              active: ["Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
+              new: ["Z", "X", "."]
             }
           },
           {
@@ -159,7 +177,8 @@
             lesson: true,
             text: "France, Australia, U.S.A. Tom, Fred, Jan. Egypt Germany Washington. March, April, May, Thursday Friday Saturday.",
             keys: {
-              active: ["Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
+              active: ["Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
+              new: ["Left-Shift", "Right-Shift"]
             }
           },
           {
@@ -169,7 +188,8 @@
             lesson: true,
             text: "; / ;? /? 1 ! 1!1! Where did he go? There! When? Now! Exit! Why? Because I said so! No! What? Really!? Yes!",
             keys: {
-              active: ["?", "!", "Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
+              active: ["?", "!", "Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
+              new: ["?", "!"]
             }
           },
           {
@@ -194,7 +214,8 @@
             lesson: true,
             text: "(cat) (hex) (zap) (goal) (sign) (seek) (extra) ((Good)game) (daily) ;) (quake) )( (Wreck) (barn) (orient) (open) (drop)",
             keys: {
-              active: ["(", ")", "?", "!", "Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
+              active: ["(", ")", "?", "!", "Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
+              new: ["(", ")"]
             }
           },
           {
@@ -204,7 +225,8 @@
             lesson: true,
             text: "Said Joy, \"Didn't, I hear 'yes?'\" \"No,\" said Quinn, \"It's not 'cause that's wrong.\" \"Listen to me!\" \"I heard you say 'no'.\" \"Let's not.\"",
             keys: {
-              active: ["'", "(", ")", "?", "!", "Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
+              active: ["'", "(", ")", "?", "!", "Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
+              new: ["'"]
             }
           },
           {
@@ -214,7 +236,8 @@
             lesson: true,
             text: "CD-ROM: Computer/monitor/keyboard: tools-for-using-computers. Red/Blue/Yellow: Color-scheme: Primary-colors. : )",
             keys: {
-              active: ["-", "'", "(", ")", "?", "!", "Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
+              active: ["-", "'", "(", ")", "?", "!", "Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
+              new: ["-"]
             }
           },
         ]

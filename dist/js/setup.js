@@ -28,16 +28,28 @@ var pageRoute = function pageRoute(context, next) {
     return next();
   }
 
-  $("main").html(App.templates.page);
-  $(".page-container").html(App.templates[page.template]);
+  $("main").html(App.templates.page(page));
+
+  $(".page-content").html(App.templates[page.template](page));
 
   if (!page.lesson) {
     return;
   }
 
-  var cb = cueboard(".cueboard-container", {
+  $(".start-exercise-button").addClass("active").on("click", function () {
+    $(".page-container").addClass("exercise");
+  });
+
+  cueboard(".instruction-cueboard-container", {
     initialKeyState: "inactive",
     keyState: page.keys || {}
+  });
+
+  var cb = cueboard(".exercise-cueboard-container", {
+    initialKeyState: "inactive",
+    keyState: {
+      active: page.keys.active || []
+    }
   });
 
   var tb = typebox(".typebox-container", {

@@ -1,13 +1,29 @@
 <div class="page-container">
-</div>
 
-<div class="lesson-container">
-  <div class="typebox-container">
+  <div class="instruction-container">
+    <div class="page-content">
+    </div>
+
+    <button class="start-exercise-button">
+      Start Exercise
+    </button>
   </div>
 
-  <div class="cueboard-container">
+  <div class="exercise-container">
+    {{#if fullTitle}}
+    <h2>
+      {{fullTitle}}
+    </h2>
+    {{/if}}
+
+    <div class="scorecenter-container">
+    </div>
+
+    <div class="typebox-container">
+    </div>
+
+    <div class="exercise-cueboard-container">
+    </div>
   </div>
 
-  <div class="scorecenter-container">
-  </div>
 </div>

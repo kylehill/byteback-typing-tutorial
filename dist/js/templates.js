@@ -1,5 +1,47 @@
 this["App"] = this["App"] || {};
 this["App"]["templates"] = this["App"]["templates"] || {};
+this["App"]["templates"]["page"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "    <h2>\n      "
+    + container.escapeExpression(((helper = (helper = helpers.fullTitle || (depth0 != null ? depth0.fullTitle : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"fullTitle","hash":{},"data":data}) : helper)))
+    + "\n    </h2>\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "<div class=\"page-container\">\n\n  <div class=\"instruction-container\">\n    <div class=\"page-content\">\n    </div>\n\n    <button class=\"start-exercise-button\">\n      Start Exercise\n    </button>\n  </div>\n\n  <div class=\"exercise-container\">\n"
+    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.fullTitle : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "\n    <div class=\"scorecenter-container\">\n    </div>\n\n    <div class=\"typebox-container\">\n    </div>\n\n    <div class=\"exercise-cueboard-container\">\n    </div>\n  </div>\n\n</div>";
+},"useData":true});
+this["App"]["templates"]["sidebar"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=depth0 != null ? depth0 : {};
+
+  return "  <div class=\"sidebar-section\">\n"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.title : depth0),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "    \n"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.pages : depth0),{"name":"each","hash":{},"fn":container.program(4, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "  </div>\n";
+},"2":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "    <div class=\"sidebar-sectiontitle\">"
+    + container.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"title","hash":{},"data":data}) : helper)))
+    + "</div>\n";
+},"4":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "    <div class=\"sidebar-page\">\n      <a class=\"sidebar-pagelink\" href=\"./"
+    + alias4(((helper = (helper = helpers.hash || (depth0 != null ? depth0.hash : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"hash","hash":{},"data":data}) : helper)))
+    + "\">\n        "
+    + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
+    + "\n      </a>\n    </div>\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "<div class=\"sidebar-container\">\n"
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.sections : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</div>";
+},"useData":true});
 this["App"]["templates"]["advanced-lesson-1"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<h2 class=\"page-title\">\n  Advanced Lesson #1: ( and )\n</h2>\n\n<img src=\"dist/img/lesson1adkeyboard.gif\" class=\"floated floated-right\" />\n\n<p>\n  An important part of word processing is the use of parenthesis. \n  These are also \"secondary\" or modified keys, so to type \n  parenthesis you will need to be holding down the <strong>shift</strong> \n  key with the <strong>left pinky</strong>. The \n  <strong>opening parenthesis</strong> is typed by reaching the \n  <strong>right ring finger</strong> up 2 rows. The \n  <strong>closing parenthesis</strong> is typed by reaching the \n  </strong>right pinky</strong> up 2 rows.\n</p>\n\n<p>\n  This will be tricky, but is very useful once you master it!\n</p>";
 },"useData":true});
@@ -34,7 +76,7 @@ this["App"]["templates"]["introduction"] = Handlebars.template({"compiler":[7,">
     return "<h2 class=\"page-title\">\n  Welcome to the Byte Back Typing Tutorial!\n</h2>\n\n<p>\n  The Byte Back Typing Tutorial is a free course designed to \n  teach touch typing. Lessons, shown on the left, begin by \n  teaching the home row keys and then gradually add additional \n  keys until the entire keyboard is mastered.\n</p>\n\n<p>\n  At the end of each exercise, your words per minute, total time, \n  errors, and characters will be displayed. Repeat each lesson \n  as many times as necessary. It is good to complete a lesson \n  with no more than <strong>5 errors</strong> and at a speed of \n  at least <strong>20 words per minute (WPM)</strong> before \n  moving on to the next lesson.\n</p>\n\n<p>\n  Remember, accuracy is the key! Go slow at first and learn the \n  keyboard. Speed will come naturally with time and practice.\n</p>\n\n<p>\n  Once all the lessons have been completed, additional \n  challenging exercises are provided to help increase speed \n  and accuracy.\n</p>";
 },"useData":true});
 this["App"]["templates"]["lesson-1"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<h2 class=\"page-title\">\n  Lesson #1: Left Hand, Home Row\n</h2>\n\n<img src=\"dist/img/lesson1keyboard.gif\" class=\"floated floated-right\" />\n\n<p>\n  This lesson teaches the four left keys of the home row. \n  <strong>Place your index finger on F, middle finger on D, \n  ring finger on S, and pinky on A.</strong> Your thumb goes on \n  the space bar. However, leave your right hand on the homerow as \n  well to get used to having both hands on the keyboard.\n</p>\n\n<p>\n  This is your first lesson, so go slow and try to get fewer than\n   five errors and faster than 20 words per minute (WPM).\n</p>\n\n<p>\n  Spend a minute memorizing the finger positions, and then keep \n  your eyes on the exercise and not on your hands. And don't forget \n  good <a href=\"./how-to-type\">posture</a>!\n</p>";
+    return "<h2 class=\"page-title\">\n  Lesson #1: Left Hand, Home Row\n</h2>\n\n<p>\n  This lesson teaches the four left keys of the home row. \n  <strong>Place your index finger on F, middle finger on D, \n  ring finger on S, and pinky on A.</strong> Your thumb goes on \n  the space bar. However, leave your right hand on the homerow as \n  well to get used to having both hands on the keyboard.\n</p>\n\n<div class=\"instruction-cueboard-container\"></div>\n\n<p>\n  This is your first lesson, so go slow and try to get fewer than\n   five errors and faster than 20 words per minute (WPM).\n</p>\n\n<p>\n  Spend a minute memorizing the finger positions, and then keep \n  your eyes on the exercise and not on your hands. And don't forget \n  good <a href=\"./how-to-type\">posture</a>!\n</p>";
 },"useData":true});
 this["App"]["templates"]["lesson-10"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<h2 class=\"page-title\">\n  Lesson #10: W and O\n</h2>\n\n<img src=\"dist/img/lesson10keyboard.gif\" class=\"floated floated-right\" />\n\n<p>\n  Now its time to go back up to the top for W and O. \n  <strong>W and O</strong> are typed by reaching the \n  <strong>ring finger</strong> up to the top row and \n  returning to S and L after each key stroke. \n  After this lesson, you will know all of the vowels!\n</p>\n\n<p>\n  Keep going until you feel comfortable!\n</p>";
@@ -55,7 +97,11 @@ this["App"]["templates"]["lesson-15"] = Handlebars.template({"compiler":[7,">= 4
     return "<h2 class=\"page-title\">\n  Lesson #15: ? and !\n</h2>\n\n<img src=\"dist/img/lesson15keyboard.gif\" class=\"floated floated-right\" />\n\n<p>\n  You can already punctuate your sentences, but now it's time to \n  add some expression. Exclamation point and the question mark \n  are the secondary uses of their keys, meaning that you must hold \n  the shift key while typing them. For <strong>!</strong> hold the \n  <strong>shift</strong> key with your <strong>right pinky</strong> \n  while reaching up to the <strong>1(!)</strong> key in the number \n  row with your </strong>left pinky</strong>. To type \n  <strong>?</strong> hold <strong>shift</strong> with the \n  <strong>left pinky</strong> while reaching down to the \n  <strong>/(?) key</strong> with your <strong>right pinky</strong>.\n</p>\n\n<p>\n  Once you master these, you're ready for the final test!\n</p>\n\n<p>\n  <strong>Fun Fact:</strong> An exclamation point followed by a question mark \n  is technically called an \n  \"<a href=\"http://en.wikipedia.org/wiki/Interrobang\">interrobang</a>.\" \n  It looks like this: <strong>‽</strong>. A reverse and upside-down interrobang is \n  called a <strong>\"gnaborretni\"</strong> (\"interrobang\" backwards).\n</p>";
 },"useData":true});
 this["App"]["templates"]["lesson-2"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<h2 class=\"page-title\">\n  Lesson #2: Right Hand, Home Row\n</h2>\n\n<img src=\"dist/img/lesson2keyboard.gif\" class=\"floated floated-right\" />\n\n<p>\n  This lesson teaches the right four keys of the home row. Your \n  <strong>index finger goes on J, middle finger on K, ring finger \n  on L, and pinky on ;</strong>. Again, leave both hands on the \n  keyboard with your thumbs on the space bar.\n</p>\n\n<p>\n  Just like the first lesson, go slow and concentrate on accuracy! \n  And no peeking at your fingers either!\n</p>";
+    var helper;
+
+  return "<h2 class=\"page-title\">\n  "
+    + container.escapeExpression(((helper = (helper = helpers.fullTitle || (depth0 != null ? depth0.fullTitle : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"fullTitle","hash":{},"data":data}) : helper)))
+    + "\n</h2>\n\n<p>\n  This lesson teaches the right four keys of the home row. Your \n  <strong>index finger goes on J, middle finger on K, ring finger \n  on L, and pinky on ;</strong>. Again, leave both hands on the \n  keyboard with your thumbs on the space bar.\n</p>\n\n<div class=\"instruction-cueboard-container\"></div>\n\n<p>\n  Just like the first lesson, go slow and concentrate on accuracy! \n  And no peeking at your fingers either!\n</p>";
 },"useData":true});
 this["App"]["templates"]["lesson-3"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<h2 class=\"page-title\">\n  Lesson #3: Both Hands, Home Row\n</h2>\n\n<img src=\"dist/img/lesson3keyboard.gif\" class=\"floated floated-right\" />\n\n<p>\n  Now it's time to combine the first two lessons. Remember to keep \n  your fingers on the home row. This is a large lesson, using almost \n  an entire row of keys so go at your own pace.\n</p>\n\n<p>\n  Remember the work you did in the previous two lessons!\n</p>";
@@ -83,36 +129,4 @@ this["App"]["templates"]["resources"] = Handlebars.template({"compiler":[7,">= 4
 },"useData":true});
 this["App"]["templates"]["using-the-tutorial"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<h2 class=\"page-title\">\n  Using the Tutorial\n</h2>\n\n<p>\n  The Byte Back Typing Tutorial is easy to use! After reading \n  this guide, start with <a href=\"./lesson-1\">Lesson #1</a> and \n  complete all 15 lessons in order.\n</p>\n\n<p>\n  Make sure that when you are doing the exercises, you can see \n  the exercise, the keyboard, and the statistics!\n</p>\n\n<div class=\"page-featureimage\">\n  <img src=\"dist/img/howtouse.jpg\" />\n</div>\n\n<ol>\n  <li>\n    <strong>The Exercise:</strong> The exercise is the top section\n    of text. This is the text that you type in each exercise. \n    When you open an exercise, the first letter should be black \n    and underlined. The timer and WPM counter will start when you \n    begin typing.\n    <ul>\n      <li>\n        Watch out for spaces. Any characters other than a space \n        for spaces count as normal errors.\n      </li>\n    </ul>\n  </li>\n  <li>\n    <strong>The Keyboard:</strong> The keyboard can help you \n    avoid looking at your hands. The current letter you need to \n    type will be in yellow. If you type a wrong letter, it will \n    show you what you typed in red. If nothing is showing and \n    the exercise is not over, you are probably on a space.\n  </li>\n  <li>\n    <strong>The Statistics:</strong> The statistics are just under \n    the keyboard. <strong>Characters</strong> tells you how many \n    keystrokes you have typed so far, <strong>errors</strong> tracks \n    the number of incorrect keystrokes, <strong>WPM</strong> tells \n    you how many words per minute you are typing, and \n    <strong>time</strong> tracks how long the exercise has taken you.\n    <ul>\n      <li>\n        Aim to get fewer than five errors and more than 20 WPM for \n        each exercise. Expect that you will have to do each exercise \n        multiple times to reach this goal.\n      </li>\n    </ul>\n  </li>\n  <li>\n    <strong>Restart Exercise:</strong> If you need to do the \n    exercise again, you can click the \"Restart Exercise\" button to \n    reload the page and its exercise. When you are ready to move on, \n    select the next lesson in the navigation menu.\n  </li>\n</ol>";
-},"useData":true});
-this["App"]["templates"]["page"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div class=\"page-container\">\n</div>\n\n<div class=\"lesson-container\">\n  <div class=\"typebox-container\">\n  </div>\n\n  <div class=\"cueboard-container\">\n  </div>\n\n  <div class=\"scorecenter-container\">\n  </div>\n</div>";
-},"useData":true});
-this["App"]["templates"]["sidebar"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
-    var stack1, alias1=depth0 != null ? depth0 : {};
-
-  return "  <div class=\"sidebar-section\">\n"
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.title : depth0),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "    \n"
-    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.pages : depth0),{"name":"each","hash":{},"fn":container.program(4, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "  </div>\n";
-},"2":function(container,depth0,helpers,partials,data) {
-    var helper;
-
-  return "    <div class=\"sidebar-sectiontitle\">"
-    + container.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"title","hash":{},"data":data}) : helper)))
-    + "</div>\n";
-},"4":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
-
-  return "    <div class=\"sidebar-page\">\n      <a class=\"sidebar-pagelink\" href=\"./"
-    + alias4(((helper = (helper = helpers.hash || (depth0 != null ? depth0.hash : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"hash","hash":{},"data":data}) : helper)))
-    + "\">\n        "
-    + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "\n      </a>\n    </div>\n";
-},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1;
-
-  return "<div class=\"sidebar-container\">\n"
-    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.sections : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</div>";
 },"useData":true});
