@@ -141,6 +141,8 @@ var loadIntro = function loadIntro(context, next) {
 
 $(function () {
 
+  var base = location.pathname.substr(0, location.pathname.length - 1);
+
   // Add structural templates to the page
   $("aside").html(App.templates.sidebar(App.lessons));
 
@@ -148,11 +150,13 @@ $(function () {
   page("/:hash", pageRoute);
   page("/", loadIntro);
 
+  page(base, loadIntro);
+
   // Start router
   page({
     hashbang: true
   });
-  page.base(location.pathname.substr(0, location.pathname.length - 1));
+  page.base(base);
 
   window.onhashchange = function (evt) {
     page.redirect(evt.newURL.split("#!")[1]);

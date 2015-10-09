@@ -3,6 +3,7 @@ var http = require('http');
 
 var app = express();
 app.use(express.static(__dirname));
+app.use("/demo", express.static(__dirname));
 
 var port = parseInt(process.env.PORT, 10) || 3000;
 app.set('port', port);
