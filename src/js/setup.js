@@ -150,12 +150,12 @@ $(function(){
   // Setup router
   page("/:hash", pageRoute)
   page("/", loadIntro)
-  page("*", loadIntro)
-
+  
   // Start router
   page({ 
     hashbang: true 
   })
+  page.base(location.pathname.substr(0, location.pathname.length - 1))
 
   window.onhashchange = function(evt){ 
     page.redirect(evt.newURL.split("#!")[1])
