@@ -64,7 +64,7 @@ gulp.task("mocha", function () {
     .on('error', gutil.log);
 })
 
-gulp.task("default", ["mocha", "babel", "templates", "sass"])
+gulp.task("default", ["mocha", "babel", "templates", "sass", "copy"])
 
 gulp.task("watch", function (){
   gulp.watch(["src/**", "test/**"], ["default"]);
