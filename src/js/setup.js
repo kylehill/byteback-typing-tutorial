@@ -152,6 +152,7 @@ $(function(){
   page("/", loadIntro)
 
   // Start router
+  page.base(window.pathname)
   page({ 
     hashbang: true 
   })
