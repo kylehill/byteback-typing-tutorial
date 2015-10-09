@@ -24,6 +24,23 @@ gulp.task("templates", function(){
     .pipe(gulp.dest("dist/js"))
 })
 
+gulp.task("copy", ["copy-cueboard", "copy-typebox", "copy-scorecenter"])
+
+gulp.task("copy-cueboard", function(){
+  return gulp.src("../cueboard/dist/**/*")
+    .pipe(gulp.dest("libs/cueboard/"))
+})
+
+gulp.task("copy-typebox", function(){
+  return gulp.src("../typebox/dist/**/*")
+    .pipe(gulp.dest("libs/typebox/"))
+})
+
+gulp.task("copy-scorecenter", function(){
+  return gulp.src("../scorecenter/dist/**/*")
+    .pipe(gulp.dest("libs/scorecenter/"))
+})
+
 gulp.task("babel", function () {
   return gulp.src("src/js/*.js")
     .pipe(babel())
