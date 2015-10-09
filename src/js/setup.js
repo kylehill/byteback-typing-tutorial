@@ -156,4 +156,8 @@ $(function(){
     hashbang: true 
   })
 
+  window.onhashchange = function(evt){ 
+    page.redirect(evt.newURL.split("#!")[1])
+  }
+  
 })
