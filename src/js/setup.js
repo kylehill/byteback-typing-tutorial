@@ -150,6 +150,7 @@ $(function(){
   // Setup router
   page("/:hash", pageRoute)
   page("/", loadIntro)
+  page("/byteback-typing-tutorial", loadIntro)
 
   // Start router
   page({ 
