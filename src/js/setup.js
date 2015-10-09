@@ -139,7 +139,6 @@ const pageRoute = function(context, next) {
 }
 
 const loadIntro = function(context, next) {
-  console.log(load)
   pageRoute({ params: { hash: "introduction" }}, next)
 }
 

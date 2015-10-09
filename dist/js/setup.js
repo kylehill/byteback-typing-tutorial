@@ -136,7 +136,6 @@ var pageRoute = function pageRoute(context, next) {
 };
 
 var loadIntro = function loadIntro(context, next) {
-  console.log(load);
   pageRoute({ params: { hash: "introduction" } }, next);
 };
 
