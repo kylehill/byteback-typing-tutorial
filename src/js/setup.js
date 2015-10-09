@@ -139,6 +139,7 @@ const pageRoute = function(context, next) {
 }
 
 const loadIntro = function(context, next) {
+  console.log(load)
   pageRoute({ params: { hash: "introduction" }}, next)
 }
 
@@ -150,7 +151,7 @@ $(function(){
   // Setup router
   page("/:hash", pageRoute)
   page("/", loadIntro)
-  page("/byteback-typing-tutorial", loadIntro)
+  page("*", loadIntro)
 
   // Start router
   page({ 
