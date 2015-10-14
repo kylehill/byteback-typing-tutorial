@@ -17,6 +17,7 @@
   "dependencies": {
     "page": "~1.6.3",
     "zepto": "~1.1.6",
-    "mousetrap": "~1.5.3"
+    "mousetrap": "~1.5.3",
+    "cueboard": "~0.2.0"
   }
 }

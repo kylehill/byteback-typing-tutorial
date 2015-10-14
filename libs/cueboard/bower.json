@@ -1,0 +1,32 @@
+{
+  "name": "cueboard",
+  "description": "A library to place a programmatic, visual keyboard onto a page",
+  "version": "0.2.0",
+  "authors": [
+    "Kyle Hill <kylehill@gmail.com>"
+  ],
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "main": [
+    "dist/js/cueboard.js",
+    "dist/css/cueboard.scss"
+  ],
+  "keywords": [
+    "keyboard",
+    "programmatic",
+    "visual",
+    "typing"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "libs/",
+    "test",
+    "tests"
+  ]
+}

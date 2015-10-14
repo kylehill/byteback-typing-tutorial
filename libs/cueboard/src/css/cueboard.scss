@@ -1,0 +1,79 @@
+$base_character_font_size: 1em;
+$base_key_height: $base_character_font_size * 3;
+$base_key_width: $base_key_height;
+
+$color_space_gray: rgb(51, 51, 51);
+$color_inactive_gray: rgb(170, 170, 170);
+$color_blank_gray: rgb(204, 204, 204);
+$color_white: rgb(250, 250, 250);
+
+.cueboard, .cueboard * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.cueboard-key {
+  color: $color_space_gray;
+  display: inline-block;
+  border: solid 3px $color_space_gray;
+  width: $base_key_width;
+  text-align: center;
+  height: $base_key_height;
+  vertical-align: top;
+  margin: $base_key_width * .1;
+  border-radius: 5px;
+  position: relative;
+  font-family: sans-serif;
+}
+
+.cueboard-blank {
+  border: solid 3px $color_blank_gray;
+}
+
+.cueboard-center .cueboard-keytext {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+  font-size: $base_character_font_size * 1.4;
+}
+
+.cueboard-bottom-left .cueboard-keytext {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  font-size: $base_character_font_size * .8;
+}
+
+.cueboard-bottom-right .cueboard-keytext {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: $base_character_font_size * .8;
+}
+
+.cueboard-dual .cueboard-keytext {
+  height: 100%;
+}
+
+.cueboard-key-top, .cueboard-key-bottom {
+  font-size: $base_character_font_size * 1.05;
+  line-height: $base_character_font_size * 1.25;
+  height: 50%;
+}
+
+[data-cueboard-keywidth='1.4'] {
+  width: $base_key_width * 1.4;
+}
+[data-cueboard-keywidth='1.8'] {
+  width: $base_key_width * 1.8;
+}
+[data-cueboard-keywidth='2.4'] {
+  width: $base_key_width * 2.4;
+}
+[data-cueboard-keywidth='6.2'] {
+  width: $base_key_width * 6.2;
+}
