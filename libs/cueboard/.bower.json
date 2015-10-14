@@ -38,6 +38,5 @@
   },
   "_source": "git://github.com/kylehill/cueboard.git",
   "_target": "~0.2.0",
-  "_originalSource": "cueboard",
-  "_direct": true
+  "_originalSource": "cueboard"
 }

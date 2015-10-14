@@ -1,0 +1,20 @@
+$color_typebox_active: rgb(255, 0, 0);
+$color_text: rgb(51, 51, 51);
+
+.typebox-container {
+  border: solid 2px $color_text;
+  padding: 10px;
+  font-size: 20px;
+  vertical-align: top;
+  margin-bottom: 20px;
+  font-family: monospace;
+}
+
+.typebox-word {
+  display: inline-block;
+}
+
+.typebox-active {
+  color: $color_typebox_active;
+  border-bottom: solid 2px $color_typebox_active;
+}

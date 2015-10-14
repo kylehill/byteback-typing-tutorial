@@ -1,0 +1,31 @@
+{
+  "name": "typebox",
+  "description": "A library to place a typing tutorial (with a visual place indicator) onto a page",
+  "version": "0.1.0",
+  "authors": [
+    "Kyle Hill <kylehill@gmail.com>"
+  ],
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "main": [
+    "dist/js/typebox.js",
+    "dist/css/typebox.css"
+  ],
+  "keywords": [
+    "typing",
+    "typebox",
+    "progress"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "libs/",
+    "test",
+    "tests"
+  ]
+}

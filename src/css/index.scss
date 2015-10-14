@@ -156,25 +156,6 @@ button {
   }
 }
 
-
-.typebox-container {
-  border: solid 2px $color_text;
-  padding: 10px;
-  font-size: 20px;
-  vertical-align: top;
-  margin-bottom: 20px;
-  font-family: monospace;
-}
-
-.typebox-word {
-  display: inline-block;
-}
-
-.typebox-active {
-  color: $color_typebox_active;
-  border-bottom: solid 2px $color_typebox_active;
-}
-
 .scorecenter-container {
   font-size: 0;
   vertical-align: top;

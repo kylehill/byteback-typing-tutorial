@@ -1,0 +1,14 @@
+.typebox-container {
+  border: solid 2px #333333;
+  padding: 10px;
+  font-size: 20px;
+  vertical-align: top;
+  margin-bottom: 20px;
+  font-family: monospace; }
+
+.typebox-word {
+  display: inline-block; }
+
+.typebox-active {
+  color: red;
+  border-bottom: solid 2px red; }
