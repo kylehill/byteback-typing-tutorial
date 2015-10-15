@@ -1,0 +1,36 @@
+{
+  "name": "scorecenter",
+  "description": "A library to record and display information",
+  "version": "0.1.0",
+  "authors": [
+    "Kyle Hill <kylehill@gmail.com>"
+  ],
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "main": [
+    "dist/js/scorecenter.js"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "libs/",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/kylehill/scorecenter",
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.0",
+    "commit": "2c18ae1c02cc22a1d3272445db1f9a0b2bd810af"
+  },
+  "_source": "git://github.com/kylehill/scorecenter.git",
+  "_target": "~0.1.0",
+  "_originalSource": "scorecenter",
+  "_direct": true
+}

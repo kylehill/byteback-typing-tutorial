@@ -56,7 +56,7 @@ var pageRoute = function pageRoute(context, next) {
     string: page.text
   });
 
-  var sc = scorecenter(".scorecenter-container", {
+  var sc = window.sc = scorecenter(".scorecenter-container", {
     refresh: 250,
     metrics: [{
       name: "characters",
@@ -83,8 +83,8 @@ var pageRoute = function pageRoute(context, next) {
         return Math.round(value * 1000) / 10 + "%";
       },
       value: function value(map) {
-        var characters = map.characters.displayValue();
-        var errors = map.errors.displayValue();
+        var characters = map.characters.value();
+        var errors = map.errors.value();
         return characters / (characters + errors || 1);
       }
     }, {
@@ -93,8 +93,8 @@ var pageRoute = function pageRoute(context, next) {
         return Math.round(value * 10) / 10;
       },
       value: function value(map) {
-        var words = map.words.displayValue();
-        var clock = map.clock.displayValue();
+        var words = map.words.value();
+        var clock = map.clock.value();
 
         return words / ((clock || 1) / 60000);
       }
@@ -129,6 +129,7 @@ var pageRoute = function pageRoute(context, next) {
 
     if (result.complete) {
       sc.getMetric("clock").stop();
+      sc.stop();
     }
 
     return evt.altKey || evt.metaKey || evt.ctrlKey;
