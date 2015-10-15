@@ -8,7 +8,7 @@ body {
   color: #333333;
   background: #005b93; }
 
-aside {
+.sidebar {
   display: inline-block;
   height: 100%;
   width: 200px;
@@ -33,7 +33,7 @@ aside {
 .sidebar-page {
   margin-bottom: 1px; }
 
-main {
+.main {
   padding: 10px 30px;
   display: inline-block;
   width: 750px;

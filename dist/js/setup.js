@@ -1,13 +1,30 @@
 "use strict";
 
+var map = function map(array, iterator, context) {
+  var out = [];
+  for (var i = 0; i < array.length; i++) {
+    out.push(iterator.call(context, array[i], i));
+  }
+  return out;
+};
+
 var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var caps = letters.map(function (l) {
+var caps = map(letters, function (l) {
   return l.toUpperCase();
 });
 var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")"];
 var extras = ["space", ",", "<", ">", ".", "?", "/", ":", ";", "\"", "'", "{", "[", "}", "]", "|", "\\", "_", "-", "+", "=", "~", "`", "enter", "tab", "delete", "backspace"];
 
 var keys = [].concat(letters, caps, numbers, extras);
+
+var getHash = function getHash(loc) {
+  if (!loc.hash) {
+    return "";
+  }
+
+  var splitHash = loc.hash.split("#!/");
+  return splitHash[1] || "";
+};
 
 var getPage = function getPage(hash, lessonsObject) {
   if (!lessonsObject || !lessonsObject.pageMap) {
@@ -20,15 +37,13 @@ var getPage = function getPage(hash, lessonsObject) {
   return lessonsObject.pageMap[hash];
 };
 
-var pageRoute = function pageRoute(context, next) {
+var pageRoute = function pageRoute(hash) {
   Mousetrap.reset();
 
-  var page = getPage(context.params.hash, App.lessons);
-  if (!page || !page.template) {
-    return next();
-  }
+  var page = getPage(hash, App.lessons);
+  //if (!page || !page.template) { return next() }
 
-  $("main").html(App.templates.page(page));
+  $(".main").html(App.templates.page(page));
 
   $(".page-content").html(App.templates[page.template](page));
 
@@ -56,7 +71,7 @@ var pageRoute = function pageRoute(context, next) {
     string: page.text
   });
 
-  var sc = window.sc = scorecenter(".scorecenter-container", {
+  var sc = scorecenter(".scorecenter-container", {
     refresh: 250,
     metrics: [{
       name: "characters",
@@ -136,8 +151,18 @@ var pageRoute = function pageRoute(context, next) {
   });
 };
 
-var loadIntro = function loadIntro(context, next) {
-  pageRoute({ params: { hash: "introduction" } }, next);
+var loadIntro = function loadIntro() {
+  pageRoute("introduction");
+};
+
+var onHashChange = function onHashChange() {
+  var hash = getHash(location);
+
+  if (hash === "") {
+    return loadIntro();
+  }
+
+  return pageRoute(hash);
 };
 
 $(function () {
@@ -145,21 +170,9 @@ $(function () {
   var base = location.pathname.substr(0, location.pathname.length - 1);
 
   // Add structural templates to the page
-  $("aside").html(App.templates.sidebar(App.lessons));
+  $(".sidebar").html(App.templates.sidebar(App.lessons));
 
-  // Setup router
-  page("/:hash", pageRoute);
-  page("/", loadIntro);
+  window.onhashchange = onHashChange;
 
-  page(base, loadIntro);
-
-  // Start router
-  page({
-    hashbang: true
-  });
-  page.base(base);
-
-  window.onhashchange = function (evt) {
-    page.redirect(evt.newURL.split("#!")[1]);
-  };
+  onHashChange();
 });

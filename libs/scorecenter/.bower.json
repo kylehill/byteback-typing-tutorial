@@ -31,6 +31,5 @@
   },
   "_source": "git://github.com/kylehill/scorecenter.git",
   "_target": "~0.1.0",
-  "_originalSource": "scorecenter",
-  "_direct": true
+  "_originalSource": "scorecenter"
 }

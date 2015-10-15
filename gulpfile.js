@@ -24,23 +24,6 @@ gulp.task("templates", function(){
     .pipe(gulp.dest("dist/js"))
 })
 
-gulp.task("copy", ["copy-cueboard", "copy-typebox", "copy-scorecenter"])
-
-gulp.task("copy-cueboard", function(){
-  return gulp.src("../cueboard/dist/**/*")
-    .pipe(gulp.dest("libs/cueboard/"))
-})
-
-gulp.task("copy-typebox", function(){
-  return gulp.src("../typebox/dist/**/*")
-    .pipe(gulp.dest("libs/typebox/"))
-})
-
-gulp.task("copy-scorecenter", function(){
-  return gulp.src("../scorecenter/dist/**/*")
-    .pipe(gulp.dest("libs/scorecenter/"))
-})
-
 gulp.task("babel", function () {
   return gulp.src("src/js/*.js")
     .pipe(babel())
@@ -64,7 +47,7 @@ gulp.task("mocha", function () {
     .on('error', gutil.log);
 })
 
-gulp.task("default", ["mocha", "babel", "templates", "sass", "copy"])
+gulp.task("default", ["mocha", "babel", "templates", "sass"])
 
 gulp.task("watch", function (){
   gulp.watch(["src/**", "test/**"], ["default"]);

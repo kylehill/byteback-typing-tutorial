@@ -1,7 +1,7 @@
 @media (min-width: 700px) and (max-width: 750px) {
-  aside {
+  .sidebar {
     width: 150px; }
-  main {
+  .main {
     width: 540px; }
   .cueboard, .cueboard * {
     font-size: 9px; }
@@ -9,9 +9,9 @@
     border-width: 1px; } }
 
 @media (min-width: 751px) and (max-width: 800px) {
-  aside {
+  .sidebar {
     width: 150px; }
-  main {
+  .main {
     width: 590px; }
   .cueboard, .cueboard * {
     font-size: 10px; }
@@ -19,9 +19,9 @@
     border-width: 2px; } }
 
 @media (min-width: 801px) and (max-width: 850px) {
-  aside {
+  .sidebar {
     width: 150px; }
-  main {
+  .main {
     width: 640px; }
   .cueboard, .cueboard * {
     font-size: 11px; }
@@ -29,7 +29,7 @@
     border-width: 2px; } }
 
 @media (min-width: 851px) and (max-width: 900px) {
-  main {
+  .main {
     width: 640px; }
   .cueboard, .cueboard * {
     font-size: 11px; }
@@ -37,25 +37,25 @@
     border-width: 2px; } }
 
 @media (min-width: 901px) and (max-width: 950px) {
-  main {
+  .main {
     width: 690px; }
   .cueboard, .cueboard * {
     font-size: 12px; } }
 
 @media (min-width: 951px) and (max-width: 1000px) {
-  main {
+  .main {
     width: 740px; }
   .cueboard, .cueboard * {
     font-size: 13px; } }
 
 @media (min-width: 1001px) and (max-width: 1100px) {
-  main {
+  .main {
     width: 790px; }
   .cueboard, .cueboard * {
     font-size: 14px; } }
 
 @media (min-width: 1101px) {
-  main {
+  .main {
     width: 890px; }
   .cueboard, .cueboard * {
     font-size: 16px; } }

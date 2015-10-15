@@ -290,8 +290,16 @@
     }]
   };
 
-  lessons.pageMap = lessons.sections.reduce(function (mem, section) {
-    return section.pages.reduce(function (mem, page) {
+  var reduce = function reduce(array, iterator, memory, context) {
+    for (var i = 0; i < array.length; i++) {
+      memory = iterator.call(context, memory, array[i]);
+    }
+
+    return memory;
+  };
+
+  lessons.pageMap = reduce(lessons.sections, function (mem, section) {
+    return reduce(section.pages, function (mem, page) {
       mem[page.hash] = page;
       return mem;
     }, mem);

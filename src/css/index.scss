@@ -22,7 +22,7 @@ body {
   background: $color_legacy_aside_background;
 }
 
-aside {
+.sidebar {
   display: inline-block;
   height: 100%;
   width: 200px;
@@ -53,7 +53,7 @@ aside {
   margin-bottom: 1px;
 }
 
-main {
+.main {
   padding: 10px 30px;
   display: inline-block;
   width: 750px;

@@ -15,12 +15,11 @@
   ],
   "private": true,
   "dependencies": {
-    "page": "~1.6.3",
-    "zepto": "~1.1.6",
     "mousetrap": "~1.5.3",
     "cueboard": "~0.2.0",
     "typebox": "~0.1.0",
     "handlebars": "~4.0.3",
-    "scorecenter": "~0.1.0"
+    "scorecenter": "~0.1.0",
+    "jquery": "~1.11.3"
   }
 }
