@@ -106,18 +106,37 @@
 
     switch(metricObject.type) {
       case "timer":
-        metricObject.start = _start.bind(metricObject)
-        metricObject.stop = _stop.bind(metricObject)
-        metricObject.reset = _reset.bind(metricObject)
-        metricObject.set = _setTimer.bind(metricObject)
-        metricObject.value = _displayValueTimer.bind(metricObject)
+        metricObject.start = function() {
+          return _start.call(metricObject)
+        }
+        metricObject.stop = function() {
+          return _stop.call(metricObject)
+        }
+        metricObject.reset = function() {
+          return _reset.call(metricObject)
+        }
+        metricObject.set = function(time) {
+          return _setTimer.call(metricObject, time)
+        }
+        metricObject.value = function() {
+          return _displayValueTimer.call(metricObject)
+        }
+
         return metricObject
 
       case "counter":
+      default:
         metricObject.count = (metric.count || 0)
-        metricObject.increment = _increment.bind(metricObject)
-        metricObject.set = _set.bind(metricObject)
-        metricObject.value = _displayValueCounter.bind(metricObject)
+        metricObject.increment = function(value) {
+          return _increment.call(metricObject, value)
+        }
+        metricObject.set = function(value) {
+          return _set.call(metricObject, value)
+        }
+        metricObject.value = function() {
+          return _displayValueCounter.call(metricObject)
+        }
+
         return metricObject
     }
 

@@ -17,9 +17,9 @@
   "dependencies": {
     "mousetrap": "~1.5.3",
     "cueboard": "~0.2.0",
-    "typebox": "~0.1.0",
+    "typebox": "~0.1.1",
     "handlebars": "~4.0.3",
-    "scorecenter": "~0.1.0",
+    "scorecenter": "~0.1.1",
     "jquery": "~1.11.3"
   }
 }

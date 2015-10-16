@@ -1,7 +1,7 @@
 {
   "name": "typebox",
   "description": "A library to place a typing tutorial (with a visual place indicator) onto a page",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "authors": [
     "Kyle Hill <kylehill@gmail.com>"
   ],
@@ -29,13 +29,13 @@
     "tests"
   ],
   "homepage": "https://github.com/kylehill/typebox",
-  "_release": "0.1.0",
+  "_release": "0.1.1",
   "_resolution": {
     "type": "version",
-    "tag": "0.1.0",
-    "commit": "aced3a77531b8a2a4df9b60babc49d41a12ee41b"
+    "tag": "0.1.1",
+    "commit": "127dae522000420ec18d350f77face2305c30948"
   },
   "_source": "git://github.com/kylehill/typebox.git",
-  "_target": "~0.1.0",
+  "_target": "~0.1.1",
   "_originalSource": "typebox"
 }

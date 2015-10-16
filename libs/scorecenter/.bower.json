@@ -1,7 +1,7 @@
 {
   "name": "scorecenter",
   "description": "A library to record and display information",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "authors": [
     "Kyle Hill <kylehill@gmail.com>"
   ],
@@ -23,13 +23,13 @@
     "tests"
   ],
   "homepage": "https://github.com/kylehill/scorecenter",
-  "_release": "0.1.0",
+  "_release": "0.1.1",
   "_resolution": {
     "type": "version",
-    "tag": "v0.1.0",
-    "commit": "2c18ae1c02cc22a1d3272445db1f9a0b2bd810af"
+    "tag": "0.1.1",
+    "commit": "48abf019cf5941ef4ae57d66d5dfd76637b3e120"
   },
   "_source": "git://github.com/kylehill/scorecenter.git",
-  "_target": "~0.1.0",
+  "_target": "~0.1.1",
   "_originalSource": "scorecenter"
 }

@@ -35,22 +35,25 @@
 
       forEach(words, function(word, i){
         let $word = $("<div class='typebox-word'>")
-        
+        $tb.append($word)
+
         const characters = word.split("")
+        
         forEach(characters, function(character){
-          let $character = $("<span class='typebox-character'>")
-          $character.text(character)
+          let $character = $("<div class='typebox-character'>")
           $word.append($character)
+          
+          $character.text(character)
           charArray.push($character)
         })
-
+        
         if ((i + 1) < words.length) {
-          let $character = $("<span class='typebox-character typebox-space'>")
-          $character.html(opts.spaceCharacter)
+          let $character = $("<div class='typebox-character typebox-space'>")
           $word.append($character)
+          
+          $character.html(opts.spaceCharacter)
           charArray.push($character)
         }
-        $tb.append($word)
       })
 
       return charArray
