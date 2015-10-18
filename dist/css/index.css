@@ -6,15 +6,20 @@
 
 body {
   color: #333333;
-  background: #005b93; }
+  background: #efefef;
+  font-family: "Oxygen", sans-serif;
+  display: table-row; }
+
+a {
+  color: #198cff;
+  text-decoration: none; }
 
 .sidebar {
-  display: inline-block;
+  display: table-cell;
   height: 100%;
   width: 200px;
-  color: #99d2ec;
-  font-family: sans-serif;
-  font-size: .8em;
+  color: #198cff;
+  font-size: 1em;
   vertical-align: top; }
 
 .sidebar-container {
@@ -24,10 +29,12 @@ body {
   margin-bottom: 20px; }
 
 .sidebar-sectiontitle {
-  font-weight: bold; }
+  font-weight: bold;
+  margin-bottom: 3px; }
 
 .sidebar-pagelink {
-  color: white;
+  margin-bottom: 3px;
+  color: #333333;
   text-decoration: none; }
 
 .sidebar-page {
@@ -35,7 +42,7 @@ body {
 
 .main {
   padding: 10px 30px;
-  display: inline-block;
+  display: table-cell;
   width: 750px;
   vertical-align: top;
   background: white;
@@ -48,15 +55,16 @@ body {
   margin-bottom: 20px; }
 
 h2, h3 {
-  color: #005c91;
+  color: #198cff;
   margin: 20px 0; }
 
 h2 {
   font-size: 24px;
-  font-family: sans-serif; }
+  font-family: "Oxygen", sans-serif; }
 
 .page-content {
-  font-family: sans-serif; }
+  font-family: "Oxygen", sans-serif;
+  padding-bottom: 30px; }
 
 .page-featureimage {
   text-align: center;
@@ -80,11 +88,11 @@ button {
   font-size: 1.2em;
   cursor: pointer;
   border-radius: 5px;
-  border-top: solid 2px #3bb16f;
-  border-left: solid 2px #3bb16f;
-  border-right: solid 2px #21653f;
-  border-bottom: solid 2px #21653f;
-  background: seagreen;
+  border-top: solid 2px #acfc00;
+  border-left: solid 2px #acfc00;
+  border-right: solid 2px #669600;
+  border-bottom: solid 2px #669600;
+  background: #89c900;
   color: white; }
 
 .start-exercise-button {
@@ -112,20 +120,21 @@ button {
 
 .scorecenter-container {
   font-size: 0;
-  vertical-align: top; }
+  vertical-align: top;
+  margin-bottom: 10px; }
 
 .scorecenter-display {
   width: 25%;
   display: inline-block;
   font-size: 16px;
   text-align: left;
-  padding: 10px;
-  font-family: sans-serif; }
+  padding: 0 30px;
+  font-family: "Oxygen", sans-serif; }
 
 .scorecenter-displaytitle {
   font-size: .9em;
   margin-bottom: 2px;
-  text-align: center; }
+  text-align: right; }
 
 .scorecenter-displayvalue {
   font-weight: bold;
@@ -145,15 +154,20 @@ button {
   color: #acacac; }
 
 .cueboard-keystate-active {
-  background: #d9f7ff; }
+  background: #198cff;
+  color: white; }
 
 .cueboard-keystate-new {
-  background: #005b93;
+  background: #198cff;
   color: white; }
 
 .cueboard-keystate-next {
-  background: red;
+  background: #89c900;
   color: white; }
 
+.cueboard-keystate-learned {
+  background: #cce5ff; }
+
 .typebox {
-  font-family: monospace, sans-serif; }
+  font-family: monospace, sans-serif;
+  font-size: 24px; }

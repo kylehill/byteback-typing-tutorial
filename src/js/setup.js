@@ -51,7 +51,10 @@ const pageRoute = function(hash) {
 
   cueboard(".instruction-cueboard-container", {
     initialKeyState: "inactive",
-    keyState: page.keys || {}
+    keyState: {
+      learned: page.keys.active,
+      new: page.keys.new
+    }
   })
   
   let cb = cueboard(".exercise-cueboard-container", {

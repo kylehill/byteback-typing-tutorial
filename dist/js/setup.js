@@ -57,7 +57,10 @@ var pageRoute = function pageRoute(hash) {
 
   cueboard(".instruction-cueboard-container", {
     initialKeyState: "inactive",
-    keyState: page.keys || {}
+    keyState: {
+      learned: page.keys.active,
+      "new": page.keys["new"]
+    }
   });
 
   var cb = cueboard(".exercise-cueboard-container", {
