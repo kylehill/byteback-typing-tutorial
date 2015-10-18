@@ -6,7 +6,6 @@
 
 body {
   color: #333333;
-  background: #efefef;
   font-family: "Oxygen", sans-serif;
   display: table-row; }
 
@@ -20,7 +19,8 @@ a {
   width: 200px;
   color: #198cff;
   font-size: 1em;
-  vertical-align: top; }
+  vertical-align: top;
+  background: #efefef; }
 
 .sidebar-container {
   margin: 20px; }

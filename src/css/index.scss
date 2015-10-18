@@ -23,7 +23,6 @@ $font_declaration: "Oxygen", sans-serif;
 
 body {
   color: $color_text;
-  background: $color_aside_background;
   font-family: $font_declaration;
   display: table-row;
 }
@@ -40,6 +39,7 @@ a {
   color: $color_main_header;
   font-size: 1em;
   vertical-align: top;
+  background: $color_aside_background;
 }
 
 .sidebar-container {
