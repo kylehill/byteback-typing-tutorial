@@ -57,7 +57,7 @@
         lesson.status.completed = true
       }
 
-      lesson.iterations.push(stats)
+      lesson.iterations.push(statsObject)
       
       lesson.best = reduce(lesson.iterations, function(mem, i){
         return {

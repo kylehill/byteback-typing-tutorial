@@ -30,6 +30,12 @@ gulp.task("babel", function () {
     .pipe(gulp.dest("dist/js"))
 })
 
+gulp.task("concat", ["babel", "templates"], function(){
+  return gulp.src("dist/js/*.js")
+    .pipe(concat("tutorial.js"))
+    .pipe(gulp.dest("dist/js"))
+})
+
 gulp.task("sass", function(){
   gulp.src('src/css/*.scss')
     .pipe(sass().on('error', sass.logError))
@@ -47,7 +53,7 @@ gulp.task("mocha", function () {
     .on('error', gutil.log);
 })
 
-gulp.task("default", ["mocha", "babel", "templates", "sass"])
+gulp.task("default", ["mocha", "concat", "sass"])
 
 gulp.task("watch", function (){
   gulp.watch(["src/**", "test/**"], ["default"]);

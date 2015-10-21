@@ -1,0 +1,42 @@
+<div class="overlay-text
+  {{#if completed}}overlay-complete
+  {{else}}overlay-incomplete{{/if}}">
+
+  {{#if completed}}
+    abcd
+  {{else}}
+    efgh
+  {{/if}}
+</div>
+<div class="overlay-stats">
+  <div class="overlay-accuracy">
+    <div class="overlay-average">
+      Average Accuracy: {{percent accuracy.average}}
+    </div>
+    {{#each accuracy.best}}
+    <div class="overlay-statrow">
+      <div class="overlay-statdate">
+        {{humanize date}}
+      </div>
+      <div class="overlay-statvalue">
+        {{percent accuracy}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  <div class="overlay-wpm">
+    <div class="overlay-average">
+      Average WPM: {{round wpm.average}}
+    </div>
+    {{#each wpm.best}}
+    <div class="overlay-statrow">
+      <div class="overlay-statdate">
+        {{humanize date}}
+      </div>
+      <div class="overlay-statvalue">
+        {{round wpm}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>

@@ -197,3 +197,6 @@ li {
 .typebox {
   font-family: monospace, sans-serif;
   font-size: 24px; }
+
+.overlay-container {
+  font-size: 16px; }
