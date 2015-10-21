@@ -1,6 +1,7 @@
 $color_typebox_active: rgb(255, 0, 0);
 $color_text: rgb(51, 51, 51);
 $color_button_background: #89c900;
+$color_clear_background: red;
 
 $color_inactive_key: rgb(172, 172, 172);
 $color_next_key: #89c900;
@@ -61,6 +62,23 @@ a {
   text-decoration: none;
 }
 
+.sidebar-status {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  border: dotted 1px $color_text;
+}
+
+.sidebar-status-started {
+  border: solid 3px red;
+}
+
+.sidebar-status-completed {
+  border: solid 1px green;
+  background: green;
+}
+
 .sidebar-page {
   margin-bottom: 1px;
 }
@@ -118,7 +136,25 @@ li {
   margin-bottom: 20px;
 }
 
-button {
+.sidebar-clearstats {
+  display: block;
+  margin: 10px auto;
+  padding: 5px 10px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  border-top: solid 2px lighten($color_clear_background, 10%);
+  border-left: solid 2px lighten($color_clear_background, 10%);
+  border-right: solid 2px darken($color_clear_background, 10%);
+  border-bottom: solid 2px darken($color_clear_background, 10%);
+  background: $color_clear_background;
+  color: white;
+}
+
+.start-exercise-button {
+  margin: 20px auto;
+  display: none;
+
   padding: 10px 20px;
   font-size: 1.2em;
   cursor: pointer;
@@ -129,11 +165,6 @@ button {
   border-bottom: solid 2px darken($color_button_background, 10%);
   background: $color_button_background;
   color: white;
-}
-
-.start-exercise-button {
-  margin: 20px auto;
-  display: none;
 
   &.active {
     display: block;

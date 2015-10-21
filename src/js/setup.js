@@ -1,3 +1,9 @@
+const forEach = function(array, iterator, context) {
+  for (let i = 0; i < array.length; i++) {
+    iterator.call(context, array[i], i)
+  }
+}
+
 const map = function(array, iterator, context) {
   let out = []
   for (let i = 0; i < array.length; i++) {
@@ -150,8 +156,7 @@ const pageRoute = function(hash) {
     }
 
     if (result.complete) {
-      sc.getMetric("clock").stop()
-      sc.stop()
+      finishLesson(page, sc)
     }
 
     return (evt.altKey || evt.metaKey || evt.ctrlKey)
@@ -173,15 +178,76 @@ const onHashChange = function() {
   return pageRoute(hash)
 }
 
+const finishLesson = function(page, sc) {
+  sc.getMetric("clock").stop()
+  sc.stop()
+
+  const completed = (sc.getMetric("errors").value() <= 5)
+  const wpm = (sc.getMetric("words").value() / sc.getMetric("clock").value()) * 60000
+  const accuracy = (sc.getMetric("characters").value() / (sc.getMetric("errors").value() + sc.getMetric("characters").value()))
+
+  console.log(page.hash, completed, wpm, accuracy)
+
+  App.tutorialState.markLesson(page.hash, {
+    completed: completed,
+    wpm: wpm,
+    accuracy: accuracy
+  })
+
+  reloadSidebar()
+}
+
+const reloadSidebar = function() {
+  const state = App.tutorialState.getState()
+
+  const lessonData = {
+    sections: map(App.lessons.sections, function(section){
+      
+      section.pages = map(section.pages, function(page){
+        if (page.lesson) {
+          page.state = state.lessons[page.hash]
+        }
+        return page
+      })
+
+      return section
+
+    })
+  }
+
+  // Add structural templates to the page
+  $(".sidebar-content").html(App.templates.sidebar(lessonData))
+}
+
+const reloadState = function() {
+  App.tutorialState.clearState()
+
+  forEach(App.lessons.sections, function(section){
+    forEach(section.pages, function(page){
+      if (page.lesson) {
+        App.tutorialState.addLesson(page)
+      }
+    })
+  })
+
+  App.tutorialState.save()
+  reloadSidebar()
+}
+
 $(function(){
 
   var base = location.pathname.substr(0, location.pathname.length - 1)
+  reloadSidebar()
 
-  // Add structural templates to the page
-  $(".sidebar").html(App.templates.sidebar(App.lessons))
-  
+  if (App.tutorialState.load() === false) {
+    reloadState()
+  }
+
   window.onhashchange = onHashChange
-
   onHashChange()
+
+  $(".js-sidebar-clearstats").on("click", function(){
+    reloadState()
+  })
   
 })

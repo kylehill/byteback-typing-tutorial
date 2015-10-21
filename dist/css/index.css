@@ -37,6 +37,20 @@ a {
   color: #333333;
   text-decoration: none; }
 
+.sidebar-status {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  border: dotted 1px #333333; }
+
+.sidebar-status-started {
+  border: solid 3px red; }
+
+.sidebar-status-completed {
+  border: solid 1px green;
+  background: green; }
+
 .sidebar-page {
   margin-bottom: 1px; }
 
@@ -83,7 +97,23 @@ li {
 .instruction-cueboard-container {
   margin-bottom: 20px; }
 
-button {
+.sidebar-clearstats {
+  display: block;
+  margin: 10px auto;
+  padding: 5px 10px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  border-top: solid 2px #ff3333;
+  border-left: solid 2px #ff3333;
+  border-right: solid 2px #cc0000;
+  border-bottom: solid 2px #cc0000;
+  background: red;
+  color: white; }
+
+.start-exercise-button {
+  margin: 20px auto;
+  display: none;
   padding: 10px 20px;
   font-size: 1.2em;
   cursor: pointer;
@@ -94,10 +124,6 @@ button {
   border-bottom: solid 2px #669600;
   background: #89c900;
   color: white; }
-
-.start-exercise-button {
-  margin: 20px auto;
-  display: none; }
   .start-exercise-button.active {
     display: block; }
 

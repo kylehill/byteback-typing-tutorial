@@ -1,5 +1,11 @@
 "use strict";
 
+var forEach = function forEach(array, iterator, context) {
+  for (var i = 0; i < array.length; i++) {
+    iterator.call(context, array[i], i);
+  }
+};
+
 var map = function map(array, iterator, context) {
   var out = [];
   for (var i = 0; i < array.length; i++) {
@@ -146,8 +152,7 @@ var pageRoute = function pageRoute(hash) {
     }
 
     if (result.complete) {
-      sc.getMetric("clock").stop();
-      sc.stop();
+      finishLesson(page, sc);
     }
 
     return evt.altKey || evt.metaKey || evt.ctrlKey;
@@ -168,14 +173,74 @@ var onHashChange = function onHashChange() {
   return pageRoute(hash);
 };
 
+var finishLesson = function finishLesson(page, sc) {
+  sc.getMetric("clock").stop();
+  sc.stop();
+
+  var completed = sc.getMetric("errors").value() <= 5;
+  var wpm = sc.getMetric("words").value() / sc.getMetric("clock").value() * 60000;
+  var accuracy = sc.getMetric("characters").value() / (sc.getMetric("errors").value() + sc.getMetric("characters").value());
+
+  console.log(page.hash, completed, wpm, accuracy);
+
+  App.tutorialState.markLesson(page.hash, {
+    completed: completed,
+    wpm: wpm,
+    accuracy: accuracy
+  });
+
+  reloadSidebar();
+};
+
+var reloadSidebar = function reloadSidebar() {
+  var state = App.tutorialState.getState();
+
+  var lessonData = {
+    sections: map(App.lessons.sections, function (section) {
+
+      section.pages = map(section.pages, function (page) {
+        if (page.lesson) {
+          page.state = state.lessons[page.hash];
+        }
+        return page;
+      });
+
+      return section;
+    })
+  };
+
+  // Add structural templates to the page
+  $(".sidebar-content").html(App.templates.sidebar(lessonData));
+};
+
+var reloadState = function reloadState() {
+  App.tutorialState.clearState();
+
+  forEach(App.lessons.sections, function (section) {
+    forEach(section.pages, function (page) {
+      if (page.lesson) {
+        App.tutorialState.addLesson(page);
+      }
+    });
+  });
+
+  App.tutorialState.save();
+  reloadSidebar();
+};
+
 $(function () {
 
   var base = location.pathname.substr(0, location.pathname.length - 1);
+  reloadSidebar();
 
-  // Add structural templates to the page
-  $(".sidebar").html(App.templates.sidebar(App.lessons));
+  if (App.tutorialState.load() === false) {
+    reloadState();
+  }
 
   window.onhashchange = onHashChange;
-
   onHashChange();
+
+  $(".js-sidebar-clearstats").on("click", function () {
+    reloadState();
+  });
 });

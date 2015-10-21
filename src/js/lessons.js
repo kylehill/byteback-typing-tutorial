@@ -27,6 +27,17 @@
       {
         pages: [
           {
+            title: "Test Lesson",
+            fullTitle: "Testing Lesson",
+            hash: "test",
+            template: "lesson-1",
+            lesson: true,
+            text: "hello world",
+            keys: {
+              active: [ "H", "E", "L", "O", "W", "R", "D", "Space" ]
+            }
+          },
+          {
             title: "Lesson #1",
             fullTitle: "Lesson #1: Left Hand, Home Row",
             hash: "lesson-1",

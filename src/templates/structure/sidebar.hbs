@@ -7,6 +7,12 @@
     
     {{#each pages}}
     <div class="sidebar-page">
+      {{#if lesson}}
+      <div class="sidebar-status 
+        {{#if state.status.started}}sidebar-status-started{{/if}}
+        {{#if state.status.completed}}sidebar-status-completed{{/if}}">
+      </div>
+      {{/if}}
       <a class="sidebar-pagelink" href="#!/{{ hash }}">
         {{title}}
       </a>
