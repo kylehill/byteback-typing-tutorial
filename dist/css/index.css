@@ -208,6 +208,7 @@ li {
   z-index: 2;
   background: rgba(255, 255, 255, 0.95);
   height: 100%;
+  min-height: 420px;
   width: 100%;
   top: 0;
   border: solid 1px #333333; }
@@ -267,14 +268,14 @@ li {
   font-weight: bold;
   font-size: 14px;
   display: inline-block;
-  width: 75%;
+  width: 70%;
   margin-right: 5%;
   padding: 3px 10px; }
 
 .overlay-statvalue {
   font-weight: bold;
   font-size: 14px;
-  width: 20%;
+  width: 25%;
   display: inline-block;
   text-align: right;
   padding: 3px 10px; }
