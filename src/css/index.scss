@@ -1,13 +1,17 @@
 $color_typebox_active: rgb(255, 0, 0);
 $color_text: rgb(51, 51, 51);
-$color_button_background: #89c900;
+$color_start_background: #89c900;
 $color_clear_background: red;
+$color_gray_background: rgb(172, 172, 172);
 
 $color_inactive_key: rgb(172, 172, 172);
 $color_next_key: #89c900;
 $color_active_key: #198cff;
 $color_new_key: $color_active_key;
 $color_learned_key: lighten($color_active_key, 35%);
+
+$color_wpm_background: rgba(137, 201, 0, .95);
+$color_accuracy_background: rgba(25, 140, 255, .95);
 
 $color_aside_background: #efefef;
 $color_main_header: #198cff;
@@ -159,11 +163,11 @@ li {
   font-size: 1.2em;
   cursor: pointer;
   border-radius: 5px;
-  border-top: solid 2px lighten($color_button_background, 10%);
-  border-left: solid 2px lighten($color_button_background, 10%);
-  border-right: solid 2px darken($color_button_background, 10%);
-  border-bottom: solid 2px darken($color_button_background, 10%);
-  background: $color_button_background;
+  border-top: solid 2px lighten($color_start_background, 10%);
+  border-left: solid 2px lighten($color_start_background, 10%);
+  border-right: solid 2px darken($color_start_background, 10%);
+  border-bottom: solid 2px darken($color_start_background, 10%);
+  background: $color_start_background;
   color: white;
 
   &.active {
@@ -268,6 +272,142 @@ li {
   font-size: 24px;
 }
 
+.controls-container {
+  position: relative;
+}
+
 .overlay-container {
+  display: none;
+  font-size: 0;
+  position: absolute;
+  z-index: 2;
+  background: rgba(255, 255, 255, .95);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  border: solid 1px $color_text;
+
+  &.active {
+    display: block;
+  }
+}
+
+.overlay-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: $color_main_header;
+}
+
+.overlay-text {
+  width: 50%;
+  display: inline-block;
+  font-size: 20px;
+  padding: 20px;
+  vertical-align: top;
+
+  &.overlay-incomplete {
+    .overlay-restartbutton {
+      background: $color_clear_background;
+      color: white;
+      border-top: solid 2px lighten($color_clear_background, 10%);
+      border-left: solid 2px lighten($color_clear_background, 10%);
+      border-right: solid 2px darken($color_clear_background, 10%);
+      border-bottom: solid 2px darken($color_clear_background, 10%);
+    }
+  }
+
+  &.overlay-complete {
+    .overlay-nextbutton {
+      background: $color_start_background;
+      color: white;
+      border-top: solid 2px lighten($color_start_background, 10%);
+      border-left: solid 2px lighten($color_start_background, 10%);
+      border-right: solid 2px darken($color_start_background, 10%);
+      border-bottom: solid 2px darken($color_start_background, 10%);
+    }
+  }
+}
+
+.overlay-stats {
+  width: 50%;
+  display: inline-block;
   font-size: 16px;
+  vertical-align: top;
+  height: 100%;
+}
+
+.overlay-section {
+  height: 50%;
+  padding: 4px 10px;
+}
+
+.overlay-sectiontitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: $color_main_header;
+}
+
+.overlay-statrow {
+  font-size: 0;
+}
+
+.overlay-statrow:not(:last-child) {
+  margin-top: 4px;
+}
+
+.overlay-statdate {
+  font-weight: bold;
+  font-size: 14px;
+  display: inline-block;
+  width: 75%;
+  margin-right: 5%;
+  padding: 3px 10px;
+}
+
+.overlay-statvalue {
+  font-weight: bold;
+  font-size: 14px;
+  width: 20%;
+  display: inline-block;
+  text-align: right;
+  padding: 3px 10px;
+}
+
+.overlay-accuracy {
+  .overlay-statvalue, .overlay-statdate {
+    background: $color_start_background;
+    color: white;
+  }
+}
+
+.overlay-wpm {
+  .overlay-statvalue, .overlay-statdate {
+    background: $color_main_header;
+    color: white;
+  }
+}
+
+.overlay-statrow-average {
+  .overlay-statvalue, .overlay-statdate {
+    background: transparent;
+    color: $color_text;
+  }
+}
+
+.pseudo-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: solid 1px black;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: $color_gray_background;
+  color: $color_text;
+  border-top: solid 2px lighten($color_gray_background, 10%);
+  border-left: solid 2px lighten($color_gray_background, 10%);
+  border-right: solid 2px darken($color_gray_background, 10%);
+  border-bottom: solid 2px darken($color_gray_background, 10%);
 }

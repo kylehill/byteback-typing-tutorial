@@ -3,15 +3,39 @@
   {{else}}overlay-incomplete{{/if}}">
 
   {{#if completed}}
-    abcd
+    <div class="overlay-title">Good work!</div>
+    <div class="overlay-content">
+      <p>You had fewer than 5 errors and typed faster than 20 WPM!</p>
+      <p>Now try the next exercise!</p>
+    </div>
   {{else}}
-    efgh
+    <div class="overlay-title">Oh, no!</div>
+    <div class="overlay-content">
+      {{#if inaccurate}}
+      <p>You had more than 5 errors this time.</p>
+      <p>Try to work on your accuracy! You'll naturally get faster as you practice.</p>
+      {{else}}
+      <p>You were slower than 20 words per minute.</p>
+      <p>Give this lesson another try and get some more practice!</p>
+      {{/if}}
+    </div>
+  {{/if}}
+
+  {{#if hash}}
+  <a class="pseudo-button overlay-restartbutton js-overlay-restartbutton">
+    Restart Lesson
+  </a>
+  {{/if}}
+  {{#if next}}
+  <a class="pseudo-button overlay-nextbutton js-overlay-nextbutton" href="#!/{{ next }}">
+    Next Lesson
+  </a>
   {{/if}}
 </div>
 <div class="overlay-stats">
-  <div class="overlay-accuracy">
-    <div class="overlay-average">
-      Average Accuracy: {{percent accuracy.average}}
+  <div class="overlay-accuracy overlay-section">
+    <div class="overlay-sectiontitle">
+      Accuracy
     </div>
     {{#each accuracy.best}}
     <div class="overlay-statrow">
@@ -23,10 +47,18 @@
       </div>
     </div>
     {{/each}}
+    <div class="overlay-statrow overlay-statrow-average">
+      <div class="overlay-statdate">
+        Average
+      </div>
+      <div class="overlay-statvalue">
+        {{percent accuracy.average}}
+      </div>
+    </div>
   </div>
-  <div class="overlay-wpm">
-    <div class="overlay-average">
-      Average WPM: {{round wpm.average}}
+  <div class="overlay-wpm overlay-section">
+    <div class="overlay-sectiontitle">
+      Words Per Minute
     </div>
     {{#each wpm.best}}
     <div class="overlay-statrow">
@@ -38,5 +70,13 @@
       </div>
     </div>
     {{/each}}
+    <div class="overlay-statrow overlay-statrow-average">
+      <div class="overlay-statdate">
+        Average
+      </div>
+      <div class="overlay-statvalue">
+        {{round wpm.average}}
+      </div>
+    </div>
   </div>
 </div>

@@ -91,7 +91,8 @@
         title: "Test Lesson",
         fullTitle: "Testing Lesson",
         hash: "test",
-        template: "lesson-1",
+        next: "lesson-1",
+        template: "lesson-0",
         lesson: true,
         text: "hello world",
         keys: {
@@ -101,6 +102,7 @@
         title: "Lesson #1",
         fullTitle: "Lesson #1: Left Hand, Home Row",
         hash: "lesson-1",
+        next: "lesson-2",
         template: "lesson-1",
         lesson: true,
         text: "a s d f s d f f s d as sd ad fs ds sad af sa fa dafa sda dad das afa sfd add sasd df sf saf dds fd ads safd fsd fas sas dafs as fad",
@@ -112,6 +114,7 @@
         title: "Lesson #2",
         fullTitle: "Lesson #2: Right Hand, Home Row",
         hash: "lesson-2",
+        next: "lesson-3",
         template: "lesson-2",
         lesson: true,
         text: "j k l ; l j k ; j l j k jk jl j; lk ;j jl kj jk ;j l; kl jl kj j klj kk j lj k klj jk; kkj jlk llj kjj ;k lj jk kj lk jj l kjl",
@@ -123,6 +126,7 @@
         title: "Lesson #3",
         fullTitle: "Lesson #3: Both Hands, Home Row",
         hash: "lesson-3",
+        next: "lesson-4",
         template: "lesson-3",
         lesson: true,
         text: "all salads flask; jasks flak sad fall klad lad dajd aj jal safs; fads salks jads flads dj ask; dallas salad kalds afls;",
@@ -133,6 +137,7 @@
         title: "Lesson #4",
         fullTitle: "Lesson #4: Home Row with G and H",
         hash: "lesson-4",
+        next: "lesson-5",
         template: "lesson-4",
         lesson: true,
         text: "f g fg gf j h jh hj had jag ask gag sagas gash hag klash flags add glad lag salad lash falls lads gas flask; shall sad dash halk glass",
@@ -144,6 +149,7 @@
         title: "Lesson #5",
         fullTitle: "Lesson #5: E and I",
         hash: "lesson-5",
+        next: "lesson-6",
         template: "lesson-5",
         lesson: true,
         text: "d de ed de k ki ik ki fed sea hike fade flik jedi flies; skies dial isle seed file skied slide likes jails deal shield hide glide shells figs",
@@ -155,6 +161,7 @@
         title: "Lesson #6",
         fullTitle: "Lesson #6: R and U",
         hash: "lesson-6",
+        next: "lesson-7",
         template: "lesson-6",
         lesson: true,
         text: "j u ju uj f r r f fr free juries real lull judge read fear shred dusk rash hush grease rake grid fudge hush fired deaf duke rude fired",
@@ -166,6 +173,7 @@
         title: "Lesson #7",
         fullTitle: "Lesson #7: T and Y",
         hash: "lesson-7",
+        next: "lesson-8",
         template: "lesson-7",
         lesson: true,
         text: "f ft ftg j jy jyh retreat fly just kite year stay treat yikes hurt hurry they style yak dart health great take later litter haste justify",
@@ -177,6 +185,7 @@
         title: "Lesson #8",
         fullTitle: "Lesson #8: B and N",
         hash: "lesson-8",
+        next: "lesson-9",
         template: "lesson-8",
         lesson: true,
         text: "j n jn nj f b fb bf find big bury near jab junk burn brink nab bane nasal blind enable bring jab blend fans bandit nifty baffled banana",
@@ -188,6 +197,7 @@
         title: "Lesson #9",
         fullTitle: "Lesson #9: V and M",
         hash: "lesson-9",
+        next: "lesson-10",
         template: "lesson-9",
         lesson: true,
         text: "f v fv fv j m jm jam vat man vase made mind venus move steam very ever middle veil viking never valve rhyme vanity hive",
@@ -199,6 +209,7 @@
         title: "Lesson #10",
         fullTitle: "Lesson #10: W and O",
         hash: "lesson-10",
+        next: "lesson-11",
         template: "lesson-10",
         lesson: true,
         text: "s sw ws l lo ol lol work dock weak toy row lord mow worth newt song few lower wind howl web body write low frog jaw",
@@ -210,6 +221,7 @@
         title: "Lesson #11",
         fullTitle: "Lesson #11: Q and P",
         hash: "lesson-11",
+        next: "lesson-12",
         template: "lesson-11",
         lesson: true,
         text: "a q aq aq ; ;p ;p play paper quit pale quin quail please quietly pink queen quip cape quart pantry equal please post quill",
@@ -221,6 +233,7 @@
         title: "Lesson #12",
         fullTitle: "Lesson #12: C and ,",
         hash: "lesson-12",
+        next: "lesson-13",
         template: "lesson-12",
         lesson: true,
         text: "d c dc cd k , k, ,k cat, cow, corn, city, comma; the black car cast quickly, counting, trace, occur space, cold, act, chat, and catch",
@@ -232,6 +245,7 @@
         title: "Lesson #13",
         fullTitle: "Lesson #13: Z, X, and .",
         hash: "lesson-13",
+        next: "lesson-14",
         template: "lesson-13",
         lesson: true,
         text: "a az za s x sx l l. .l tax. zap. extra exact. plaza axle waltz. f.o.x. pizza text. dizzy. exit taxi crazy. zoo exam. next prize",
@@ -243,6 +257,7 @@
         title: "Lesson #14",
         fullTitle: "Lesson #14: The Shift Key",
         hash: "lesson-14",
+        next: "lesson-15",
         template: "lesson-14",
         lesson: true,
         text: "France, Australia, U.S.A. Tom, Fred, Jan. Egypt Germany Washington. March, April, May, Thursday Friday Saturday.",
@@ -254,6 +269,7 @@
         title: "Lesson #15",
         fullTitle: "Lesson #15: ? and !",
         hash: "lesson-15",
+        next: "final-test",
         template: "lesson-15",
         lesson: true,
         text: "; / ;? /? 1 ! 1!1! Where did he go? There! When? Now! Exit! Why? Because I said so! No! What? Really!? Yes!",
@@ -265,6 +281,7 @@
         title: "Final Test",
         fullTitle: "Final Test",
         hash: "final-test",
+        next: "advanced-lesson-1",
         template: "final-test",
         lesson: true,
         text: "How does it feel to have completed our typing tutorial? Before you call yourself an expert, however, just pass this quick quiz. Do not be lazy, for if you do a careless job on this evaluation, you should take it again. Make your best effort. Doing great? Almost finished! Now time to get your score!",
@@ -278,6 +295,7 @@
         title: "Lesson #1",
         fullTitle: "Advanced Lesson #1: ( and )",
         hash: "advanced-lesson-1",
+        next: "advanced-lesson-2",
         template: "advanced-lesson-1",
         lesson: true,
         text: "(cat) (hex) (zap) (goal) (sign) (seek) (extra) ((Good)game) (daily) ;) (quake) )( (Wreck) (barn) (orient) (open) (drop)",
@@ -289,6 +307,7 @@
         title: "Lesson #2",
         fullTitle: "Advanced Lesson #2: ' and \"",
         hash: "advanced-lesson-2",
+        next: "advanced-lesson-3",
         template: "advanced-lesson-2",
         lesson: true,
         text: "Said Joy, \"Didn't, I hear 'yes?'\" \"No,\" said Quinn, \"It's not 'cause that's wrong.\" \"Listen to me!\" \"I heard you say 'no'.\" \"Let's not.\"",
@@ -300,6 +319,7 @@
         title: "Lesson #3",
         fullTitle: "Advanced Lesson #3: :, -, and /",
         hash: "advanced-lesson-3",
+        next: "practice-1",
         template: "advanced-lesson-3",
         lesson: true,
         text: "CD-ROM: Computer/monitor/keyboard: tools-for-using-computers. Red/Blue/Yellow: Color-scheme: Primary-colors. : )",
@@ -313,6 +333,7 @@
       pages: [{
         title: "Practice #1",
         hash: "practice-1",
+        next: "practice-2",
         template: "extra-practice-1",
         lesson: true,
         text: "\"They want to deliver vast amounts of information over the internet. And again, the internet is not something you just dump something on. It's not a truck. It's a series of tubes! And if you don't understand those tubes can be filled and if they are filled, when you put your message in, it gets in line and its going to be delayed by anyone that puts into that tube enormous amounts of material, enormous amounts of material.\"",
@@ -322,6 +343,7 @@
       }, {
         title: "Practice #2",
         hash: "practice-2",
+        next: "practice-3",
         template: "extra-practice-2",
         lesson: true,
         text: "The name \"echo\" comes from the Greek nymph Echo. According to Greek mythology, Echo was a Nymph who had the job of talking incessantly to Hera, the Queen of the Gods. Hera caught on to Echo's trick and cursed her to only be able to say what others had just said - hence the word \"echo\". \"A duck's quack doesn't echo,\" is a much quoted scientific myth. The truth is that a duck's quack in fact, does echo, however it may be difficult to hear.",
@@ -331,6 +353,7 @@
       }, {
         title: "Practice #3",
         hash: "practice-3",
+        next: "practice-4",
         template: "extra-practice-3",
         lesson: true,
         text: "The Walrus and the Carpenter walked on a mile or so, and then rested on a rock - conveniently low: and all the little oysters stood and waited in a row. \"The time has come,\" the Walrus said, \"To talk of many things: Of shoes-and ships-and sealing-wax-Of cabbages-and kings-And why the sea is boiling hot-And whether pigs have wings.\"",
@@ -340,6 +363,7 @@
       }, {
         title: "Practice #4",
         hash: "practice-4",
+        next: "practice-5",
         template: "extra-practice-4",
         lesson: true,
         text: "Extreme Ironing (or EI) is an extreme sport and a performance art in which people take an ironing board to a remote location and iron a few items of clothing. According to the official website, extreme ironing is \"the latest danger sport that combines the thrills of an extreme outdoor activity with the satisfaction of a well-pressed shirt.\" Part of the attraction and interest the media has towards extreme ironing seems to centre on the issue of whether it is really a sport or not. It is widely considered to be tongue-in-cheek.",
@@ -572,9 +596,9 @@ var finishLesson = function finishLesson(page, sc) {
   sc.stop();
   sc.refresh();
 
-  var completed = sc.getMetric("errors").value() <= 5;
   var wpm = sc.getMetric("words").value() / sc.getMetric("clock").value() * 60000;
   var accuracy = sc.getMetric("characters").value() / (sc.getMetric("errors").value() + sc.getMetric("characters").value());
+  var completed = wpm >= 20 && sc.getMetric("errors").value() <= 5;
 
   var lesson = App.tutorialState.markLesson(page.hash, {
     completed: completed,
@@ -585,7 +609,10 @@ var finishLesson = function finishLesson(page, sc) {
   reloadSidebar();
 
   $(".overlay-container").html(App.templates.overlay({
+    hash: page.hash,
+    next: page.next,
     completed: completed,
+    inaccurate: accuracy < .95,
     accuracy: {
       average: lesson.average.accuracy,
       best: lesson.iterations.sort(function (a, b) {
@@ -598,7 +625,11 @@ var finishLesson = function finishLesson(page, sc) {
         return b.wpm - a.wpm;
       }).slice(0, 5)
     }
-  }));
+  })).addClass("active");
+
+  $(".js-overlay-restartbutton").on("click", function () {
+    pageRoute(page.hash);
+  });
 };
 
 var reloadSidebar = function reloadSidebar() {
@@ -641,12 +672,10 @@ $(function () {
 
   App.registerHelpers();
 
-  var base = location.pathname.substr(0, location.pathname.length - 1);
-  reloadSidebar();
-
   if (App.tutorialState.load() === false) {
     reloadState();
   }
+  reloadSidebar();
 
   window.onhashchange = onHashChange;
   onHashChange();
@@ -812,6 +841,9 @@ this["App"]["templates"]["how-to-type"] = Handlebars.template({"compiler":[7,">=
 this["App"]["templates"]["introduction"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<h2 class=\"page-title\">\n  Welcome to the Byte Back Typing Tutorial!\n</h2>\n\n<p>\n  The Byte Back Typing Tutorial is a free course designed to \n  teach touch typing. Lessons, shown on the left, begin by \n  teaching the home row keys and then gradually add additional \n  keys until the entire keyboard is mastered.\n</p>\n\n<p>\n  At the end of each exercise, your words per minute, total time, \n  errors, and characters will be displayed. Repeat each lesson \n  as many times as necessary. It is good to complete a lesson \n  with no more than <strong>5 errors</strong> and at a speed of \n  at least <strong>20 words per minute (WPM)</strong> before \n  moving on to the next lesson.\n</p>\n\n<p>\n  Remember, accuracy is the key! Go slow at first and learn the \n  keyboard. Speed will come naturally with time and practice.\n</p>\n\n<p>\n  Once all the lessons have been completed, additional \n  challenging exercises are provided to help increase speed \n  and accuracy.\n</p>";
 },"useData":true});
+this["App"]["templates"]["lesson-0"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<h2 class=\"page-title\">\n  Lesson #0: Left Hand, Home Row\n</h2>\n\n<p>\n  This is a test lesson! It's really short so the developer can test out\n  how the grading system works quickly. It'll be removed in the final product :)\n</p>\n\n<div class=\"instruction-cueboard-container\"></div>";
+},"useData":true});
 this["App"]["templates"]["lesson-1"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<h2 class=\"page-title\">\n  Lesson #1: Left Hand, Home Row\n</h2>\n\n<p>\n  This lesson teaches the four left keys of the home row. \n  <strong>Place your index finger on F, middle finger on D, \n  ring finger on S, and pinky on A.</strong> Your thumb goes on \n  the space bar. However, leave your right hand on the homerow as \n  well to get used to having both hands on the keyboard.\n</p>\n\n<div class=\"instruction-cueboard-container\"></div>\n\n<p>\n  This is your first lesson, so go slow and try to get fewer than\n   five errors and faster than 20 words per minute (WPM).\n</p>\n\n<p>\n  Spend a minute memorizing the finger positions, and then keep \n  your eyes on the exercise and not on your hands. And don't forget \n  good <a href=\"#!/how-to-type\">posture</a>!\n</p>";
 },"useData":true});
@@ -872,10 +904,26 @@ this["App"]["templates"]["overlay"] = Handlebars.template({"1":function(containe
 },"3":function(container,depth0,helpers,partials,data) {
     return "overlay-incomplete";
 },"5":function(container,depth0,helpers,partials,data) {
-    return "    abcd\n";
+    return "    <div class=\"overlay-title\">Good work!</div>\n    <div class=\"overlay-content\">\n      <p>You had fewer than 5 errors and typed faster than 20 WPM!</p>\n      <p>Now try the next exercise!</p>\n    </div>\n";
 },"7":function(container,depth0,helpers,partials,data) {
-    return "    efgh\n";
-},"9":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "    <div class=\"overlay-title\">Oh, no!</div>\n    <div class=\"overlay-content\">\n"
+    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.inaccurate : depth0),{"name":"if","hash":{},"fn":container.program(8, data, 0),"inverse":container.program(10, data, 0),"data":data})) != null ? stack1 : "")
+    + "    </div>\n";
+},"8":function(container,depth0,helpers,partials,data) {
+    return "      <p>You had more than 5 errors this time.</p>\n      <p>Try to work on your accuracy! You'll naturally get faster as you practice.</p>\n";
+},"10":function(container,depth0,helpers,partials,data) {
+    return "      <p>You were slower than 20 words per minute.</p>\n      <p>Give this lesson another try and get some more practice!</p>\n";
+},"12":function(container,depth0,helpers,partials,data) {
+    return "  <a class=\"pseudo-button overlay-restartbutton js-overlay-restartbutton\">\n    Restart Lesson\n  </a>\n";
+},"14":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "  <a class=\"pseudo-button overlay-nextbutton js-overlay-nextbutton\" href=\"#!/"
+    + container.escapeExpression(((helper = (helper = helpers.next || (depth0 != null ? depth0.next : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"next","hash":{},"data":data}) : helper)))
+    + "\">\n    Next Lesson\n  </a>\n";
+},"16":function(container,depth0,helpers,partials,data) {
     var alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
 
   return "    <div class=\"overlay-statrow\">\n      <div class=\"overlay-statdate\">\n        "
@@ -883,7 +931,7 @@ this["App"]["templates"]["overlay"] = Handlebars.template({"1":function(containe
     + "\n      </div>\n      <div class=\"overlay-statvalue\">\n        "
     + alias3((helpers.percent || (depth0 && depth0.percent) || alias2).call(alias1,(depth0 != null ? depth0.accuracy : depth0),{"name":"percent","hash":{},"data":data}))
     + "\n      </div>\n    </div>\n";
-},"11":function(container,depth0,helpers,partials,data) {
+},"18":function(container,depth0,helpers,partials,data) {
     var alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
 
   return "    <div class=\"overlay-statrow\">\n      <div class=\"overlay-statdate\">\n        "
@@ -898,15 +946,18 @@ this["App"]["templates"]["overlay"] = Handlebars.template({"1":function(containe
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.completed : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "")
     + "\">\n\n"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.completed : depth0),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.program(7, data, 0),"data":data})) != null ? stack1 : "")
-    + "</div>\n<div class=\"overlay-stats\">\n  <div class=\"overlay-accuracy\">\n    <div class=\"overlay-average\">\n      Average Accuracy: "
+    + "\n"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.hash : depth0),{"name":"if","hash":{},"fn":container.program(12, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.next : depth0),{"name":"if","hash":{},"fn":container.program(14, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</div>\n<div class=\"overlay-stats\">\n  <div class=\"overlay-accuracy overlay-section\">\n    <div class=\"overlay-sectiontitle\">\n      Accuracy\n    </div>\n"
+    + ((stack1 = helpers.each.call(alias1,((stack1 = (depth0 != null ? depth0.accuracy : depth0)) != null ? stack1.best : stack1),{"name":"each","hash":{},"fn":container.program(16, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "    <div class=\"overlay-statrow overlay-statrow-average\">\n      <div class=\"overlay-statdate\">\n        Average\n      </div>\n      <div class=\"overlay-statvalue\">\n        "
     + alias3((helpers.percent || (depth0 && depth0.percent) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.accuracy : depth0)) != null ? stack1.average : stack1),{"name":"percent","hash":{},"data":data}))
-    + "\n    </div>\n"
-    + ((stack1 = helpers.each.call(alias1,((stack1 = (depth0 != null ? depth0.accuracy : depth0)) != null ? stack1.best : stack1),{"name":"each","hash":{},"fn":container.program(9, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "  </div>\n  <div class=\"overlay-wpm\">\n    <div class=\"overlay-average\">\n      Average WPM: "
+    + "\n      </div>\n    </div>\n  </div>\n  <div class=\"overlay-wpm overlay-section\">\n    <div class=\"overlay-sectiontitle\">\n      Words Per Minute\n    </div>\n"
+    + ((stack1 = helpers.each.call(alias1,((stack1 = (depth0 != null ? depth0.wpm : depth0)) != null ? stack1.best : stack1),{"name":"each","hash":{},"fn":container.program(18, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "    <div class=\"overlay-statrow overlay-statrow-average\">\n      <div class=\"overlay-statdate\">\n        Average\n      </div>\n      <div class=\"overlay-statvalue\">\n        "
     + alias3((helpers.round || (depth0 && depth0.round) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.wpm : depth0)) != null ? stack1.average : stack1),{"name":"round","hash":{},"data":data}))
-    + "\n    </div>\n"
-    + ((stack1 = helpers.each.call(alias1,((stack1 = (depth0 != null ? depth0.wpm : depth0)) != null ? stack1.best : stack1),{"name":"each","hash":{},"fn":container.program(11, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "  </div>\n</div>";
+    + "\n      </div>\n    </div>\n  </div>\n</div>";
 },"useData":true});
 this["App"]["templates"]["page"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var helper;
@@ -964,782 +1015,3 @@ this["App"]["templates"]["sidebar"] = Handlebars.template({"1":function(containe
     + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.sections : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</div>";
 },"useData":true});
-"use strict";
-
-;(function () {
-
-  var helpers = function helpers() {
-
-    Handlebars.registerHelper("percent", function (value) {
-      return Math.round(value * 1000) / 10 + "%";
-    });
-
-    Handlebars.registerHelper("round", function (value) {
-      return Math.round(value * 10) / 10;
-    });
-
-    Handlebars.registerHelper("humanize", function (value) {
-      var msDelta = new Date().valueOf() - value;
-
-      // Less than 5 seconds, go with "Just Now"
-      if (msDelta < 5 * 1000) {
-        return "just now";
-      }
-
-      // Less than 1 minutes, go with "X seconds ago"
-      if (msDelta < 60 * 1000) {
-        return Math.floor(msDelta / 1000) + " seconds ago";
-      }
-
-      // Less than 1 hour, go with "X minutes ago"
-      if (msDelta < 60 * 60 * 1000) {
-        if (msDelta < 2 * 60 * 1000) {
-          return "1 minute ago";
-        }
-
-        return Math.floor(msDelta / (60 * 1000)) + " minutes ago";
-      }
-
-      // Less than 1 day, go with "X hours ago"
-      if (msDelta < 24 * 60 * 60 * 1000) {
-        if (msDelta < 2 * 60 * 60 * 1000) {
-          return "1 hour ago";
-        }
-
-        return Math.floor(msDelta / (60 * 60 * 1000)) + " hours ago";
-      }
-
-      // Go with "X days ago"
-      if (msDelta < 2 * 24 * 60 * 60 * 1000) {
-        return "yesterday";
-      }
-
-      return Math.floor(msDelta / (24 * 60 * 60 * 1000)) + " days ago";
-    });
-  };
-
-  var PackageDefinition = helpers;
-  var PackageName = "registerHelpers";
-
-  if ("undefined" !== typeof exports) module.exports = PackageDefinition;else if ("function" === typeof define && define.amd) {
-    define(PackageName, function () {
-      return PackageDefinition;
-    });
-  } else {
-    window.App = window.App || {};
-    window.App[PackageName] = PackageDefinition;
-  }
-})();
-"use strict";
-
-;(function () {
-
-  var lessons = {
-    sections: [{
-      pages: [{
-        title: "Introduction",
-        hash: "introduction",
-        template: "introduction",
-        lesson: false
-      }, {
-        title: "How to Type",
-        hash: "how-to-type",
-        template: "how-to-type",
-        lesson: false
-      }, {
-        title: "Using the Tutorial",
-        hash: "using-the-tutorial",
-        template: "using-the-tutorial",
-        lesson: false
-      }]
-    }, {
-      pages: [{
-        title: "Test Lesson",
-        fullTitle: "Testing Lesson",
-        hash: "test",
-        template: "lesson-1",
-        lesson: true,
-        text: "hello world",
-        keys: {
-          active: ["H", "E", "L", "O", "W", "R", "D", "Space"]
-        }
-      }, {
-        title: "Lesson #1",
-        fullTitle: "Lesson #1: Left Hand, Home Row",
-        hash: "lesson-1",
-        template: "lesson-1",
-        lesson: true,
-        text: "a s d f s d f f s d as sd ad fs ds sad af sa fa dafa sda dad das afa sfd add sasd df sf saf dds fd ads safd fsd fas sas dafs as fad",
-        keys: {
-          active: ["A", "S", "D", "F", "Space"],
-          "new": ["A", "S", "D", "F", "Space"]
-        }
-      }, {
-        title: "Lesson #2",
-        fullTitle: "Lesson #2: Right Hand, Home Row",
-        hash: "lesson-2",
-        template: "lesson-2",
-        lesson: true,
-        text: "j k l ; l j k ; j l j k jk jl j; lk ;j jl kj jk ;j l; kl jl kj j klj kk j lj k klj jk; kkj jlk llj kjj ;k lj jk kj lk jj l kjl",
-        keys: {
-          active: ["J", "K", "L", ";", "Space"],
-          "new": ["J", "K", "L", ";"]
-        }
-      }, {
-        title: "Lesson #3",
-        fullTitle: "Lesson #3: Both Hands, Home Row",
-        hash: "lesson-3",
-        template: "lesson-3",
-        lesson: true,
-        text: "all salads flask; jasks flak sad fall klad lad dajd aj jal safs; fads salks jads flads dj ask; dallas salad kalds afls;",
-        keys: {
-          active: ["A", "S", "D", "F", "J", "K", "L", ";", "Space"]
-        }
-      }, {
-        title: "Lesson #4",
-        fullTitle: "Lesson #4: Home Row with G and H",
-        hash: "lesson-4",
-        template: "lesson-4",
-        lesson: true,
-        text: "f g fg gf j h jh hj had jag ask gag sagas gash hag klash flags add glad lag salad lash falls lads gas flask; shall sad dash halk glass",
-        keys: {
-          active: ["G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
-          "new": ["G", "H"]
-        }
-      }, {
-        title: "Lesson #5",
-        fullTitle: "Lesson #5: E and I",
-        hash: "lesson-5",
-        template: "lesson-5",
-        lesson: true,
-        text: "d de ed de k ki ik ki fed sea hike fade flik jedi flies; skies dial isle seed file skied slide likes jails deal shield hide glide shells figs",
-        keys: {
-          active: ["E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
-          "new": ["E", "I"]
-        }
-      }, {
-        title: "Lesson #6",
-        fullTitle: "Lesson #6: R and U",
-        hash: "lesson-6",
-        template: "lesson-6",
-        lesson: true,
-        text: "j u ju uj f r r f fr free juries real lull judge read fear shred dusk rash hush grease rake grid fudge hush fired deaf duke rude fired",
-        keys: {
-          active: ["R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
-          "new": ["R", "U"]
-        }
-      }, {
-        title: "Lesson #7",
-        fullTitle: "Lesson #7: T and Y",
-        hash: "lesson-7",
-        template: "lesson-7",
-        lesson: true,
-        text: "f ft ftg j jy jyh retreat fly just kite year stay treat yikes hurt hurry they style yak dart health great take later litter haste justify",
-        keys: {
-          active: ["T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
-          "new": ["T", "Y"]
-        }
-      }, {
-        title: "Lesson #8",
-        fullTitle: "Lesson #8: B and N",
-        hash: "lesson-8",
-        template: "lesson-8",
-        lesson: true,
-        text: "j n jn nj f b fb bf find big bury near jab junk burn brink nab bane nasal blind enable bring jab blend fans bandit nifty baffled banana",
-        keys: {
-          active: ["B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
-          "new": ["B", "N"]
-        }
-      }, {
-        title: "Lesson #9",
-        fullTitle: "Lesson #9: V and M",
-        hash: "lesson-9",
-        template: "lesson-9",
-        lesson: true,
-        text: "f v fv fv j m jm jam vat man vase made mind venus move steam very ever middle veil viking never valve rhyme vanity hive",
-        keys: {
-          active: ["V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
-          "new": ["V", "M"]
-        }
-      }, {
-        title: "Lesson #10",
-        fullTitle: "Lesson #10: W and O",
-        hash: "lesson-10",
-        template: "lesson-10",
-        lesson: true,
-        text: "s sw ws l lo ol lol work dock weak toy row lord mow worth newt song few lower wind howl web body write low frog jaw",
-        keys: {
-          active: ["W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
-          "new": ["W", "O"]
-        }
-      }, {
-        title: "Lesson #11",
-        fullTitle: "Lesson #11: Q and P",
-        hash: "lesson-11",
-        template: "lesson-11",
-        lesson: true,
-        text: "a q aq aq ; ;p ;p play paper quit pale quin quail please quietly pink queen quip cape quart pantry equal please post quill",
-        keys: {
-          active: ["Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
-          "new": ["Q", "P"]
-        }
-      }, {
-        title: "Lesson #12",
-        fullTitle: "Lesson #12: C and ,",
-        hash: "lesson-12",
-        template: "lesson-12",
-        lesson: true,
-        text: "d c dc cd k , k, ,k cat, cow, corn, city, comma; the black car cast quickly, counting, trace, occur space, cold, act, chat, and catch",
-        keys: {
-          active: ["C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
-          "new": ["C", ","]
-        }
-      }, {
-        title: "Lesson #13",
-        fullTitle: "Lesson #13: Z, X, and .",
-        hash: "lesson-13",
-        template: "lesson-13",
-        lesson: true,
-        text: "a az za s x sx l l. .l tax. zap. extra exact. plaza axle waltz. f.o.x. pizza text. dizzy. exit taxi crazy. zoo exam. next prize",
-        keys: {
-          active: ["Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
-          "new": ["Z", "X", "."]
-        }
-      }, {
-        title: "Lesson #14",
-        fullTitle: "Lesson #14: The Shift Key",
-        hash: "lesson-14",
-        template: "lesson-14",
-        lesson: true,
-        text: "France, Australia, U.S.A. Tom, Fred, Jan. Egypt Germany Washington. March, April, May, Thursday Friday Saturday.",
-        keys: {
-          active: ["Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
-          "new": ["Left-Shift", "Right-Shift"]
-        }
-      }, {
-        title: "Lesson #15",
-        fullTitle: "Lesson #15: ? and !",
-        hash: "lesson-15",
-        template: "lesson-15",
-        lesson: true,
-        text: "; / ;? /? 1 ! 1!1! Where did he go? There! When? Now! Exit! Why? Because I said so! No! What? Really!? Yes!",
-        keys: {
-          active: ["?", "!", "Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
-          "new": ["?", "!"]
-        }
-      }, {
-        title: "Final Test",
-        fullTitle: "Final Test",
-        hash: "final-test",
-        template: "final-test",
-        lesson: true,
-        text: "How does it feel to have completed our typing tutorial? Before you call yourself an expert, however, just pass this quick quiz. Do not be lazy, for if you do a careless job on this evaluation, you should take it again. Make your best effort. Doing great? Almost finished! Now time to get your score!",
-        keys: {
-          active: ["?", "!", "Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
-        }
-      }]
-    }, {
-      title: "Advanced",
-      pages: [{
-        title: "Lesson #1",
-        fullTitle: "Advanced Lesson #1: ( and )",
-        hash: "advanced-lesson-1",
-        template: "advanced-lesson-1",
-        lesson: true,
-        text: "(cat) (hex) (zap) (goal) (sign) (seek) (extra) ((Good)game) (daily) ;) (quake) )( (Wreck) (barn) (orient) (open) (drop)",
-        keys: {
-          active: ["(", ")", "?", "!", "Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
-          "new": ["(", ")"]
-        }
-      }, {
-        title: "Lesson #2",
-        fullTitle: "Advanced Lesson #2: ' and \"",
-        hash: "advanced-lesson-2",
-        template: "advanced-lesson-2",
-        lesson: true,
-        text: "Said Joy, \"Didn't, I hear 'yes?'\" \"No,\" said Quinn, \"It's not 'cause that's wrong.\" \"Listen to me!\" \"I heard you say 'no'.\" \"Let's not.\"",
-        keys: {
-          active: ["'", "(", ")", "?", "!", "Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
-          "new": ["'"]
-        }
-      }, {
-        title: "Lesson #3",
-        fullTitle: "Advanced Lesson #3: :, -, and /",
-        hash: "advanced-lesson-3",
-        template: "advanced-lesson-3",
-        lesson: true,
-        text: "CD-ROM: Computer/monitor/keyboard: tools-for-using-computers. Red/Blue/Yellow: Color-scheme: Primary-colors. : )",
-        keys: {
-          active: ["-", "'", "(", ")", "?", "!", "Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"],
-          "new": ["-"]
-        }
-      }]
-    }, {
-      title: "Extra Practice",
-      pages: [{
-        title: "Practice #1",
-        hash: "practice-1",
-        template: "extra-practice-1",
-        lesson: true,
-        text: "\"They want to deliver vast amounts of information over the internet. And again, the internet is not something you just dump something on. It's not a truck. It's a series of tubes! And if you don't understand those tubes can be filled and if they are filled, when you put your message in, it gets in line and its going to be delayed by anyone that puts into that tube enormous amounts of material, enormous amounts of material.\"",
-        keys: {
-          active: ["-", "'", "(", ")", "?", "!", "Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
-        }
-      }, {
-        title: "Practice #2",
-        hash: "practice-2",
-        template: "extra-practice-2",
-        lesson: true,
-        text: "The name \"echo\" comes from the Greek nymph Echo. According to Greek mythology, Echo was a Nymph who had the job of talking incessantly to Hera, the Queen of the Gods. Hera caught on to Echo's trick and cursed her to only be able to say what others had just said - hence the word \"echo\". \"A duck's quack doesn't echo,\" is a much quoted scientific myth. The truth is that a duck's quack in fact, does echo, however it may be difficult to hear.",
-        keys: {
-          active: ["-", "'", "(", ")", "?", "!", "Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
-        }
-      }, {
-        title: "Practice #3",
-        hash: "practice-3",
-        template: "extra-practice-3",
-        lesson: true,
-        text: "The Walrus and the Carpenter walked on a mile or so, and then rested on a rock - conveniently low: and all the little oysters stood and waited in a row. \"The time has come,\" the Walrus said, \"To talk of many things: Of shoes-and ships-and sealing-wax-Of cabbages-and kings-And why the sea is boiling hot-And whether pigs have wings.\"",
-        keys: {
-          active: ["-", "'", "(", ")", "?", "!", "Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
-        }
-      }, {
-        title: "Practice #4",
-        hash: "practice-4",
-        template: "extra-practice-4",
-        lesson: true,
-        text: "Extreme Ironing (or EI) is an extreme sport and a performance art in which people take an ironing board to a remote location and iron a few items of clothing. According to the official website, extreme ironing is \"the latest danger sport that combines the thrills of an extreme outdoor activity with the satisfaction of a well-pressed shirt.\" Part of the attraction and interest the media has towards extreme ironing seems to centre on the issue of whether it is really a sport or not. It is widely considered to be tongue-in-cheek.",
-        keys: {
-          active: ["-", "'", "(", ")", "?", "!", "Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
-        }
-      }, {
-        title: "Practice #5",
-        hash: "practice-5",
-        template: "extra-practice-5",
-        lesson: true,
-        text: "Though the traditional notion of rain in the Western World is negative, rain can also bring joy, as some consider it to be soothing or enjoy the aesthetic appeal of it. In dry places, such as parts of Africa, Australia, India, and the Middle East, rain is greeted with euphoria. (In Botswana, the Setswana word for rain, \"pula,\" is used as the name of the national currency, in recognition of the economic importance of rain in this desert country.)",
-        keys: {
-          active: ["-", "'", "(", ")", "?", "!", "Left-Shift", "Right-Shift", "Z", "X", ".", "C", ",", "Q", "P", "W", "O", "V", "M", "B", "N", "T", "Y", "R", "U", "E", "I", "G", "H", "A", "S", "D", "F", "J", "K", "L", ";", "Space"]
-        }
-      }]
-    }, {
-      pages: [{
-        title: "Resources",
-        hash: "resources",
-        template: "resources",
-        lesson: false
-      }]
-    }]
-  };
-
-  var reduce = function reduce(array, iterator, memory, context) {
-    for (var i = 0; i < array.length; i++) {
-      memory = iterator.call(context, memory, array[i]);
-    }
-
-    return memory;
-  };
-
-  lessons.pageMap = reduce(lessons.sections, function (mem, section) {
-    return reduce(section.pages, function (mem, page) {
-      mem[page.hash] = page;
-      return mem;
-    }, mem);
-  }, {});
-
-  var PackageDefinition = lessons;
-  var PackageName = "lessons";
-
-  if ("undefined" !== typeof exports) module.exports = PackageDefinition;else if ("function" === typeof define && define.amd) {
-    define(PackageName, function () {
-      return PackageDefinition;
-    });
-  } else {
-    window.App = window.App || {};
-    window.App[PackageName] = PackageDefinition;
-  }
-})();
-"use strict";
-
-var forEach = function forEach(array, iterator, context) {
-  for (var i = 0; i < array.length; i++) {
-    iterator.call(context, array[i], i);
-  }
-};
-
-var map = function map(array, iterator, context) {
-  var out = [];
-  for (var i = 0; i < array.length; i++) {
-    out.push(iterator.call(context, array[i], i));
-  }
-  return out;
-};
-
-var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var caps = map(letters, function (l) {
-  return l.toUpperCase();
-});
-var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")"];
-var extras = ["space", ",", "<", ">", ".", "?", "/", ":", ";", "\"", "'", "{", "[", "}", "]", "|", "\\", "_", "-", "+", "=", "~", "`", "enter", "tab", "delete", "backspace"];
-
-var keys = [].concat(letters, caps, numbers, extras);
-
-var getHash = function getHash(loc) {
-  if (!loc.hash) {
-    return "";
-  }
-
-  var splitHash = loc.hash.split("#!/");
-  return splitHash[1] || "";
-};
-
-var getPage = function getPage(hash, lessonsObject) {
-  if (!lessonsObject || !lessonsObject.pageMap) {
-    return false;
-  }
-  if (!lessonsObject.pageMap[hash]) {
-    return false;
-  }
-
-  return lessonsObject.pageMap[hash];
-};
-
-var pageRoute = function pageRoute(hash) {
-  Mousetrap.reset();
-
-  var page = getPage(hash, App.lessons);
-
-  $(".main").html(App.templates.page(page));
-
-  $(".page-content").html(App.templates[page.template](page));
-
-  if (!page.lesson) {
-    return;
-  }
-
-  $(".start-exercise-button").addClass("active").on("click", function () {
-    $(".page-container").addClass("exercise");
-  });
-
-  cueboard(".instruction-cueboard-container", {
-    initialKeyState: "inactive",
-    keyState: {
-      learned: page.keys.active,
-      "new": page.keys["new"]
-    }
-  });
-
-  var cb = cueboard(".exercise-cueboard-container", {
-    initialKeyState: "inactive",
-    keyState: {
-      active: page.keys.active || []
-    }
-  });
-
-  var tb = typebox(".typebox-container", {
-    string: page.text
-  });
-
-  var sc = scorecenter(".scorecenter-container", {
-    refresh: 250,
-    metrics: [{
-      name: "characters",
-      type: "counter"
-    }, {
-      name: "errors",
-      type: "counter"
-    }, {
-      name: "clock",
-      type: "timer"
-    }, {
-      name: "words",
-      type: "counter"
-    }],
-    displays: [{
-      title: "Characters",
-      metric: "characters"
-    }, {
-      title: "Errors",
-      metric: "errors"
-    }, {
-      title: "Accuracy",
-      format: function format(value) {
-        return Math.round(value * 1000) / 10 + "%";
-      },
-      value: function value(map) {
-        var characters = map.characters.value();
-        var errors = map.errors.value();
-        return characters / (characters + errors || 1);
-      }
-    }, {
-      title: "Words Per Minute",
-      format: function format(value) {
-        return Math.round(value * 10) / 10;
-      },
-      value: function value(map) {
-        var words = map.words.value();
-        var clock = map.clock.value();
-
-        return words / ((clock || 1) / 60000);
-      }
-    }]
-  });
-
-  var state = tb.state();
-  if (state.next) {
-    cb.changeState("next", state.next);
-  }
-
-  Mousetrap.bind(keys, function (evt, key) {
-    sc.getMetric("clock").start();
-    var result = tb.applyCharacter(key);
-
-    if (result.accurate === true) {
-      sc.getMetric("characters").increment();
-      cb.changeState("active", key);
-
-      if (result.next) {
-        cb.changeState("next", result.next);
-      }
-
-      if (result.next === " " || result.complete) {
-        sc.getMetric("words").increment();
-      }
-    }
-
-    if (result.accurate === false) {
-      sc.getMetric("errors").increment();
-    }
-
-    if (result.complete) {
-      finishLesson(page, sc);
-    }
-
-    return evt.altKey || evt.metaKey || evt.ctrlKey;
-  });
-};
-
-var loadIntro = function loadIntro() {
-  pageRoute("introduction");
-};
-
-var onHashChange = function onHashChange() {
-  var hash = getHash(location);
-
-  if (hash === "") {
-    return loadIntro();
-  }
-
-  return pageRoute(hash);
-};
-
-var finishLesson = function finishLesson(page, sc) {
-  sc.getMetric("clock").stop();
-  sc.stop();
-  sc.refresh();
-
-  var completed = sc.getMetric("errors").value() <= 5;
-  var wpm = sc.getMetric("words").value() / sc.getMetric("clock").value() * 60000;
-  var accuracy = sc.getMetric("characters").value() / (sc.getMetric("errors").value() + sc.getMetric("characters").value());
-
-  var lesson = App.tutorialState.markLesson(page.hash, {
-    completed: completed,
-    wpm: wpm,
-    accuracy: accuracy
-  });
-
-  reloadSidebar();
-
-  $(".overlay-container").html(App.templates.overlay({
-    completed: completed,
-    accuracy: {
-      average: lesson.average.accuracy,
-      best: lesson.iterations.sort(function (a, b) {
-        return b.accuracy - a.accuracy;
-      }).slice(0, 5)
-    },
-    wpm: {
-      average: lesson.average.wpm,
-      best: lesson.iterations.sort(function (a, b) {
-        return b.wpm - a.wpm;
-      }).slice(0, 5)
-    }
-  }));
-};
-
-var reloadSidebar = function reloadSidebar() {
-  var state = App.tutorialState.getState();
-
-  var lessonData = {
-    sections: map(App.lessons.sections, function (section) {
-
-      section.pages = map(section.pages, function (page) {
-        if (page.lesson) {
-          page.state = state.lessons[page.hash];
-        }
-        return page;
-      });
-
-      return section;
-    })
-  };
-
-  // Add structural templates to the page
-  $(".sidebar-content").html(App.templates.sidebar(lessonData));
-};
-
-var reloadState = function reloadState() {
-  App.tutorialState.clearState();
-
-  forEach(App.lessons.sections, function (section) {
-    forEach(section.pages, function (page) {
-      if (page.lesson) {
-        App.tutorialState.addLesson(page);
-      }
-    });
-  });
-
-  App.tutorialState.save();
-  reloadSidebar();
-};
-
-$(function () {
-
-  App.registerHelpers();
-
-  var base = location.pathname.substr(0, location.pathname.length - 1);
-  reloadSidebar();
-
-  if (App.tutorialState.load() === false) {
-    reloadState();
-  }
-
-  window.onhashchange = onHashChange;
-  onHashChange();
-
-  $(".js-sidebar-clearstats").on("click", function () {
-    reloadState();
-  });
-});
-"use strict";
-
-;(function () {
-
-  var reduce = function reduce(array, iterator, memory, optionalContext) {
-    for (var i = 0; i < array.length; i++) {
-      memory = iterator.call(optionalContext, memory, array[i], i);
-    }
-    return memory;
-  };
-
-  var state = {
-    lessons: {}
-  };
-
-  var tutorialState = {
-
-    clearState: function clearState() {
-      state = {
-        lessons: {}
-      };
-    },
-
-    getState: function getState() {
-      return state;
-    },
-
-    addLesson: function addLesson(lesson) {
-      state.lessons[lesson.hash] = {
-        title: lesson.title,
-        hash: lesson.hash,
-        status: {
-          completed: false,
-          started: false
-        },
-        best: {
-          accuracy: 0,
-          wpm: 0
-        },
-        average: {
-          accuracy: 0,
-          wpm: 0
-        },
-        iterations: []
-      };
-    },
-
-    markLesson: function markLesson(hash, stats) {
-      var lesson = state.lessons[hash];
-      var statsObject = {
-        wpm: stats.wpm,
-        accuracy: stats.accuracy,
-        complete: stats.complete,
-        date: new Date().valueOf()
-      };
-
-      lesson.status.started = true;
-      if (stats.completed) {
-        lesson.status.completed = true;
-      }
-
-      lesson.iterations.push(statsObject);
-
-      lesson.best = reduce(lesson.iterations, function (mem, i) {
-        return {
-          accuracy: Math.max(mem.accuracy, i.accuracy),
-          wpm: Math.max(mem.wpm, i.wpm)
-        };
-      }, { wpm: 0, accuracy: 0 });
-
-      lesson.average = reduce(lesson.iterations, function (mem, i) {
-        return {
-          accuracy: mem.accuracy + i.accuracy,
-          wpm: mem.wpm + i.wpm
-        };
-      }, { wpm: 0, accuracy: 0 });
-
-      lesson.average.accuracy = lesson.average.accuracy / lesson.iterations.length;
-      lesson.average.wpm = lesson.average.wpm / lesson.iterations.length;
-
-      this.save();
-
-      return lesson;
-    },
-
-    serialize: function serialize() {
-      return JSON.stringify(state);
-    },
-
-    deserialize: function deserialize(stateString) {
-      state = JSON.parse(stateString);
-    },
-
-    save: function save() {
-      var stateString = this.serialize();
-      localStorage.setItem("tt-data", stateString);
-    },
-
-    load: function load() {
-      var stateString = localStorage.getItem("tt-data");
-      if (stateString) {
-        this.deserialize(stateString);
-        return true;
-      }
-
-      return false;
-    }
-
-  };
-
-  var PackageDefinition = tutorialState;
-  var PackageName = "tutorialState";
-
-  if ("undefined" !== typeof exports) module.exports = PackageDefinition;else if ("function" === typeof define && define.amd) {
-    define(PackageName, function () {
-      return PackageDefinition;
-    });
-  } else {
-    window.App = window.App || {};
-    window.App[PackageName] = PackageDefinition;
-  }
-})();

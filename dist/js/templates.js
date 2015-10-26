@@ -33,6 +33,9 @@ this["App"]["templates"]["how-to-type"] = Handlebars.template({"compiler":[7,">=
 this["App"]["templates"]["introduction"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<h2 class=\"page-title\">\n  Welcome to the Byte Back Typing Tutorial!\n</h2>\n\n<p>\n  The Byte Back Typing Tutorial is a free course designed to \n  teach touch typing. Lessons, shown on the left, begin by \n  teaching the home row keys and then gradually add additional \n  keys until the entire keyboard is mastered.\n</p>\n\n<p>\n  At the end of each exercise, your words per minute, total time, \n  errors, and characters will be displayed. Repeat each lesson \n  as many times as necessary. It is good to complete a lesson \n  with no more than <strong>5 errors</strong> and at a speed of \n  at least <strong>20 words per minute (WPM)</strong> before \n  moving on to the next lesson.\n</p>\n\n<p>\n  Remember, accuracy is the key! Go slow at first and learn the \n  keyboard. Speed will come naturally with time and practice.\n</p>\n\n<p>\n  Once all the lessons have been completed, additional \n  challenging exercises are provided to help increase speed \n  and accuracy.\n</p>";
 },"useData":true});
+this["App"]["templates"]["lesson-0"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<h2 class=\"page-title\">\n  Lesson #0: Left Hand, Home Row\n</h2>\n\n<p>\n  This is a test lesson! It's really short so the developer can test out\n  how the grading system works quickly. It'll be removed in the final product :)\n</p>\n\n<div class=\"instruction-cueboard-container\"></div>";
+},"useData":true});
 this["App"]["templates"]["lesson-1"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<h2 class=\"page-title\">\n  Lesson #1: Left Hand, Home Row\n</h2>\n\n<p>\n  This lesson teaches the four left keys of the home row. \n  <strong>Place your index finger on F, middle finger on D, \n  ring finger on S, and pinky on A.</strong> Your thumb goes on \n  the space bar. However, leave your right hand on the homerow as \n  well to get used to having both hands on the keyboard.\n</p>\n\n<div class=\"instruction-cueboard-container\"></div>\n\n<p>\n  This is your first lesson, so go slow and try to get fewer than\n   five errors and faster than 20 words per minute (WPM).\n</p>\n\n<p>\n  Spend a minute memorizing the finger positions, and then keep \n  your eyes on the exercise and not on your hands. And don't forget \n  good <a href=\"#!/how-to-type\">posture</a>!\n</p>";
 },"useData":true});
@@ -93,10 +96,26 @@ this["App"]["templates"]["overlay"] = Handlebars.template({"1":function(containe
 },"3":function(container,depth0,helpers,partials,data) {
     return "overlay-incomplete";
 },"5":function(container,depth0,helpers,partials,data) {
-    return "    abcd\n";
+    return "    <div class=\"overlay-title\">Good work!</div>\n    <div class=\"overlay-content\">\n      <p>You had fewer than 5 errors and typed faster than 20 WPM!</p>\n      <p>Now try the next exercise!</p>\n    </div>\n";
 },"7":function(container,depth0,helpers,partials,data) {
-    return "    efgh\n";
-},"9":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "    <div class=\"overlay-title\">Oh, no!</div>\n    <div class=\"overlay-content\">\n"
+    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.inaccurate : depth0),{"name":"if","hash":{},"fn":container.program(8, data, 0),"inverse":container.program(10, data, 0),"data":data})) != null ? stack1 : "")
+    + "    </div>\n";
+},"8":function(container,depth0,helpers,partials,data) {
+    return "      <p>You had more than 5 errors this time.</p>\n      <p>Try to work on your accuracy! You'll naturally get faster as you practice.</p>\n";
+},"10":function(container,depth0,helpers,partials,data) {
+    return "      <p>You were slower than 20 words per minute.</p>\n      <p>Give this lesson another try and get some more practice!</p>\n";
+},"12":function(container,depth0,helpers,partials,data) {
+    return "  <a class=\"pseudo-button overlay-restartbutton js-overlay-restartbutton\">\n    Restart Lesson\n  </a>\n";
+},"14":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "  <a class=\"pseudo-button overlay-nextbutton js-overlay-nextbutton\" href=\"#!/"
+    + container.escapeExpression(((helper = (helper = helpers.next || (depth0 != null ? depth0.next : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"next","hash":{},"data":data}) : helper)))
+    + "\">\n    Next Lesson\n  </a>\n";
+},"16":function(container,depth0,helpers,partials,data) {
     var alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
 
   return "    <div class=\"overlay-statrow\">\n      <div class=\"overlay-statdate\">\n        "
@@ -104,7 +123,7 @@ this["App"]["templates"]["overlay"] = Handlebars.template({"1":function(containe
     + "\n      </div>\n      <div class=\"overlay-statvalue\">\n        "
     + alias3((helpers.percent || (depth0 && depth0.percent) || alias2).call(alias1,(depth0 != null ? depth0.accuracy : depth0),{"name":"percent","hash":{},"data":data}))
     + "\n      </div>\n    </div>\n";
-},"11":function(container,depth0,helpers,partials,data) {
+},"18":function(container,depth0,helpers,partials,data) {
     var alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
 
   return "    <div class=\"overlay-statrow\">\n      <div class=\"overlay-statdate\">\n        "
@@ -119,15 +138,18 @@ this["App"]["templates"]["overlay"] = Handlebars.template({"1":function(containe
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.completed : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "")
     + "\">\n\n"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.completed : depth0),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.program(7, data, 0),"data":data})) != null ? stack1 : "")
-    + "</div>\n<div class=\"overlay-stats\">\n  <div class=\"overlay-accuracy\">\n    <div class=\"overlay-average\">\n      Average Accuracy: "
+    + "\n"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.hash : depth0),{"name":"if","hash":{},"fn":container.program(12, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.next : depth0),{"name":"if","hash":{},"fn":container.program(14, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</div>\n<div class=\"overlay-stats\">\n  <div class=\"overlay-accuracy overlay-section\">\n    <div class=\"overlay-sectiontitle\">\n      Accuracy\n    </div>\n"
+    + ((stack1 = helpers.each.call(alias1,((stack1 = (depth0 != null ? depth0.accuracy : depth0)) != null ? stack1.best : stack1),{"name":"each","hash":{},"fn":container.program(16, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "    <div class=\"overlay-statrow overlay-statrow-average\">\n      <div class=\"overlay-statdate\">\n        Average\n      </div>\n      <div class=\"overlay-statvalue\">\n        "
     + alias3((helpers.percent || (depth0 && depth0.percent) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.accuracy : depth0)) != null ? stack1.average : stack1),{"name":"percent","hash":{},"data":data}))
-    + "\n    </div>\n"
-    + ((stack1 = helpers.each.call(alias1,((stack1 = (depth0 != null ? depth0.accuracy : depth0)) != null ? stack1.best : stack1),{"name":"each","hash":{},"fn":container.program(9, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "  </div>\n  <div class=\"overlay-wpm\">\n    <div class=\"overlay-average\">\n      Average WPM: "
+    + "\n      </div>\n    </div>\n  </div>\n  <div class=\"overlay-wpm overlay-section\">\n    <div class=\"overlay-sectiontitle\">\n      Words Per Minute\n    </div>\n"
+    + ((stack1 = helpers.each.call(alias1,((stack1 = (depth0 != null ? depth0.wpm : depth0)) != null ? stack1.best : stack1),{"name":"each","hash":{},"fn":container.program(18, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "    <div class=\"overlay-statrow overlay-statrow-average\">\n      <div class=\"overlay-statdate\">\n        Average\n      </div>\n      <div class=\"overlay-statvalue\">\n        "
     + alias3((helpers.round || (depth0 && depth0.round) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.wpm : depth0)) != null ? stack1.average : stack1),{"name":"round","hash":{},"data":data}))
-    + "\n    </div>\n"
-    + ((stack1 = helpers.each.call(alias1,((stack1 = (depth0 != null ? depth0.wpm : depth0)) != null ? stack1.best : stack1),{"name":"each","hash":{},"fn":container.program(11, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "  </div>\n</div>";
+    + "\n      </div>\n    </div>\n  </div>\n</div>";
 },"useData":true});
 this["App"]["templates"]["page"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var helper;

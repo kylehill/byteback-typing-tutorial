@@ -182,10 +182,10 @@ const finishLesson = function(page, sc) {
   sc.stop()
   sc.refresh()
 
-  const completed = (sc.getMetric("errors").value() <= 5)
   const wpm = (sc.getMetric("words").value() / sc.getMetric("clock").value()) * 60000
   const accuracy = (sc.getMetric("characters").value() / (sc.getMetric("errors").value() + sc.getMetric("characters").value()))
-
+  const completed = (wpm >= 20 && sc.getMetric("errors").value() <= 5)
+  
   const lesson = App.tutorialState.markLesson(page.hash, {
     completed: completed,
     wpm: wpm,
@@ -195,7 +195,10 @@ const finishLesson = function(page, sc) {
   reloadSidebar()
 
   $(".overlay-container").html(App.templates.overlay({
+    hash: page.hash,
+    next: page.next,
     completed: completed,
+    inaccurate: (accuracy < .95),
     accuracy: {
       average: lesson.average.accuracy,
       best: lesson.iterations.sort(function(a, b){
@@ -208,7 +211,12 @@ const finishLesson = function(page, sc) {
         return b.wpm - a.wpm
       }).slice(0, 5)
     }
-  }))
+  })).addClass("active")
+
+  $(".js-overlay-restartbutton").on("click", function(){
+    pageRoute(page.hash)
+  })
+
 }
 
 const reloadSidebar = function() {
@@ -252,13 +260,11 @@ $(function(){
 
   App.registerHelpers()
 
-  var base = location.pathname.substr(0, location.pathname.length - 1)
-  reloadSidebar()
-
   if (App.tutorialState.load() === false) {
     reloadState()
   }
-
+  reloadSidebar()
+  
   window.onhashchange = onHashChange
   onHashChange()
 

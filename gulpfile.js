@@ -33,7 +33,7 @@ gulp.task("babel", function () {
 gulp.task("concat", ["babel", "templates"], function(){
   return gulp.src("dist/js/*.js")
     .pipe(concat("tutorial.js"))
-    .pipe(gulp.dest("dist/js"))
+    .pipe(gulp.dest("dist/concat"))
 })
 
 gulp.task("sass", function(){
