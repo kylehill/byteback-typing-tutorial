@@ -1,3 +1,8 @@
+.cueboard-center .cueboard-keytext {
+  position: static;
+  vertical-align: top;
+  padding: 10px 0; }
+
 * {
   margin: 0;
   padding: 0;
@@ -312,3 +317,65 @@ li {
   border-left: solid 2px #c6c6c6;
   border-right: solid 2px #939393;
   border-bottom: solid 2px #939393; }
+
+@media (min-width: 700px) and (max-width: 750px) {
+  .sidebar {
+    width: 150px; }
+  .main {
+    width: 540px; }
+  .cueboard, .cueboard * {
+    font-size: 9px; }
+  .cueboard-key {
+    border-width: 1px; } }
+
+@media (min-width: 751px) and (max-width: 800px) {
+  .sidebar {
+    width: 150px; }
+  .main {
+    width: 590px; }
+  .cueboard, .cueboard * {
+    font-size: 10px; }
+  .cueboard-key {
+    border-width: 2px; } }
+
+@media (min-width: 801px) and (max-width: 850px) {
+  .sidebar {
+    width: 150px; }
+  .main {
+    width: 640px; }
+  .cueboard, .cueboard * {
+    font-size: 11px; }
+  .cueboard-key {
+    border-width: 2px; } }
+
+@media (min-width: 851px) and (max-width: 900px) {
+  .main {
+    width: 640px; }
+  .cueboard, .cueboard * {
+    font-size: 11px; }
+  .cueboard-key {
+    border-width: 2px; } }
+
+@media (min-width: 901px) and (max-width: 950px) {
+  .main {
+    width: 690px; }
+  .cueboard, .cueboard * {
+    font-size: 12px; } }
+
+@media (min-width: 951px) and (max-width: 1000px) {
+  .main {
+    width: 740px; }
+  .cueboard, .cueboard * {
+    font-size: 13px; } }
+
+@media (min-width: 1001px) and (max-width: 1100px) {
+  .main {
+    width: 790px; }
+  .cueboard, .cueboard * {
+    font-size: 14px; } }
+
+@media (min-width: 1101px) {
+  .main {
+    width: 890px; }
+  .cueboard, .cueboard * {
+    font-size: 16px; } }

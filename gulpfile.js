@@ -1,4 +1,5 @@
 var gulp = require("gulp")
+var autoprefixer = require("gulp-autoprefixer")
 var babel = require("gulp-babel")
 var babelCompiler = require("babel/register")
 var mocha = require("gulp-mocha")
@@ -37,9 +38,15 @@ gulp.task("concat", ["babel", "templates"], function(){
 })
 
 gulp.task("sass", function(){
-  gulp.src('src/css/*.scss')
+  return gulp.src('src/css/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('dist/css'));
+})
+
+gulp.task("prefix", ["sass"], function(){
+  return gulp.src('dist/css/*.css')
+    .pipe(concat("tutorial.css"))
+    .pipe(gulp.dest("dist/concat"))
 })
 
 gulp.task("mocha", function () {
@@ -53,7 +60,7 @@ gulp.task("mocha", function () {
     .on('error', gutil.log);
 })
 
-gulp.task("default", ["mocha", "concat", "sass"])
+gulp.task("default", ["mocha", "concat", "prefix"])
 
 gulp.task("watch", function (){
   gulp.watch(["src/**", "test/**"], ["default"]);

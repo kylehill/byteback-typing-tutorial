@@ -18,6 +18,7 @@
     "chai": "^3.3.0",
     "express": "^4.13.3",
     "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-babel": "^5.2.1",
     "gulp-concat": "^2.6.0",
     "gulp-declare": "^0.3.0",
