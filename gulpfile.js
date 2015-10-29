@@ -43,8 +43,8 @@ gulp.task("sass", function(){
     .pipe(gulp.dest('dist/css'));
 })
 
-gulp.task("prefix", ["sass"], function(){
-  return gulp.src('dist/css/*.css')
+gulp.task("concat-css", ["sass"], function(){
+  return gulp.src(['dist/css/index.css', 'dist/css/responsive.css'])
     .pipe(concat("tutorial.css"))
     .pipe(gulp.dest("dist/concat"))
 })
@@ -60,7 +60,7 @@ gulp.task("mocha", function () {
     .on('error', gutil.log);
 })
 
-gulp.task("default", ["mocha", "concat", "prefix"])
+gulp.task("default", ["mocha", "concat", "concat-css"])
 
 gulp.task("watch", function (){
   gulp.watch(["src/**", "test/**"], ["default"]);

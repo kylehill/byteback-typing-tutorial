@@ -2,6 +2,7 @@ $color_typebox_active: rgb(255, 0, 0);
 $color_text: rgb(51, 51, 51);
 $color_start_background: #89c900;
 $color_clear_background: red;
+$color_blue_background: #198cff;
 $color_gray_background: rgb(172, 172, 172);
 
 $color_inactive_key: rgb(172, 172, 172);
@@ -30,6 +31,10 @@ body {
   color: $color_text;
   font-family: $font_declaration;
   display: table-row;
+}
+
+.hideUntilLoaded {
+  display: none;
 }
 
 a {
@@ -416,4 +421,21 @@ li {
   border-left: solid 2px lighten($color_gray_background, 10%);
   border-right: solid 2px darken($color_gray_background, 10%);
   border-bottom: solid 2px darken($color_gray_background, 10%);
+}
+
+.startover-container {
+  text-align: right;
+}
+
+.overlay-startover {
+  margin-top: 20px;
+  font-size: 16px;
+  width: inherit;
+  display: inline-block;
+  background: $color_blue_background;
+  border-top: solid 2px lighten($color_blue_background, 10%);
+  border-left: solid 2px lighten($color_blue_background, 10%);
+  border-right: solid 2px darken($color_blue_background, 10%);
+  border-bottom: solid 2px darken($color_blue_background, 10%);
+  color: white;
 }

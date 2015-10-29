@@ -1,8 +1,3 @@
-.cueboard-center .cueboard-keytext {
-  position: static;
-  vertical-align: top;
-  padding: 10px 0; }
-
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +8,9 @@ body {
   color: #333333;
   font-family: "Oxygen", sans-serif;
   display: table-row; }
+
+.hideUntilLoaded {
+  display: none; }
 
 a {
   color: #198cff;
@@ -317,6 +315,21 @@ li {
   border-left: solid 2px #c6c6c6;
   border-right: solid 2px #939393;
   border-bottom: solid 2px #939393; }
+
+.startover-container {
+  text-align: right; }
+
+.overlay-startover {
+  margin-top: 20px;
+  font-size: 16px;
+  width: inherit;
+  display: inline-block;
+  background: #198cff;
+  border-top: solid 2px #4ca5ff;
+  border-left: solid 2px #4ca5ff;
+  border-right: solid 2px #0072e5;
+  border-bottom: solid 2px #0072e5;
+  color: white; }
 
 @media (min-width: 700px) and (max-width: 750px) {
   .sidebar {

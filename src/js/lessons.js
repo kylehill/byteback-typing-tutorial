@@ -27,18 +27,6 @@
       {
         pages: [
           {
-            title: "Test Lesson",
-            fullTitle: "Testing Lesson",
-            hash: "test",
-            next: "lesson-1",
-            template: "lesson-0",
-            lesson: true,
-            text: "hello world",
-            keys: {
-              active: [ "H", "E", "L", "O", "W", "R", "D", "Space" ]
-            }
-          },
-          {
             title: "Lesson #1",
             fullTitle: "Lesson #1: Left Hand, Home Row",
             hash: "lesson-1",
@@ -340,6 +328,7 @@
           {
             title: "Practice #5",
             hash: "practice-5",
+            next: "resources",
             template: "extra-practice-5",
             lesson: true,
             text: "Though the traditional notion of rain in the Western World is negative, rain can also bring joy, as some consider it to be soothing or enjoy the aesthetic appeal of it. In dry places, such as parts of Africa, Australia, India, and the Middle East, rain is greeted with euphoria. (In Botswana, the Setswana word for rain, \"pula,\" is used as the name of the national currency, in recognition of the economic importance of rain in this desert country.)",

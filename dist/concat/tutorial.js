@@ -2,6 +2,63 @@
 
 ;(function () {
 
+  var finishLesson = function finishLesson(page, sc) {
+    sc.getMetric("clock").stop();
+    sc.stop();
+    sc.refresh();
+
+    var wpm = sc.getMetric("words").value() / sc.getMetric("clock").value() * 60000;
+    var accuracy = sc.getMetric("characters").value() / (sc.getMetric("errors").value() + sc.getMetric("characters").value());
+    var completed = wpm >= 20 && sc.getMetric("errors").value() <= 5;
+
+    var lesson = App.tutorialState.markLesson(page.hash, {
+      completed: completed,
+      wpm: wpm,
+      accuracy: accuracy
+    });
+
+    reloadSidebar();
+
+    $(".overlay-container").html(App.templates.overlay({
+      hash: page.hash,
+      next: page.next,
+      completed: completed,
+      inaccurate: accuracy < .95,
+      accuracy: {
+        average: lesson.average.accuracy,
+        best: lesson.iterations.sort(function (a, b) {
+          return b.accuracy - a.accuracy;
+        }).slice(0, 5)
+      },
+      wpm: {
+        average: lesson.average.wpm,
+        best: lesson.iterations.sort(function (a, b) {
+          return b.wpm - a.wpm;
+        }).slice(0, 5)
+      }
+    })).addClass("active");
+
+    $(".js-overlay-restartbutton").on("click", function () {
+      App.loadRoute(page.hash);
+    });
+  };
+
+  var PackageDefinition = finishLesson;
+  var PackageName = "finishLesson";
+
+  if ("undefined" !== typeof exports) module.exports = PackageDefinition;else if ("function" === typeof define && define.amd) {
+    define(PackageName, function () {
+      return PackageDefinition;
+    });
+  } else {
+    window.App = window.App || {};
+    window.App[PackageName] = PackageDefinition;
+  }
+})();
+"use strict";
+
+;(function () {
+
   var helpers = function helpers() {
 
     Handlebars.registerHelper("percent", function (value) {
@@ -88,17 +145,6 @@
       }]
     }, {
       pages: [{
-        title: "Test Lesson",
-        fullTitle: "Testing Lesson",
-        hash: "test",
-        next: "lesson-1",
-        template: "lesson-0",
-        lesson: true,
-        text: "hello world",
-        keys: {
-          active: ["H", "E", "L", "O", "W", "R", "D", "Space"]
-        }
-      }, {
         title: "Lesson #1",
         fullTitle: "Lesson #1: Left Hand, Home Row",
         hash: "lesson-1",
@@ -373,6 +419,7 @@
       }, {
         title: "Practice #5",
         hash: "practice-5",
+        next: "resources",
         template: "extra-practice-5",
         lesson: true,
         text: "Though the traditional notion of rain in the Western World is negative, rain can also bring joy, as some consider it to be soothing or enjoy the aesthetic appeal of it. In dry places, such as parts of Africa, Australia, India, and the Middle East, rain is greeted with euphoria. (In Botswana, the Setswana word for rain, \"pula,\" is used as the name of the national currency, in recognition of the economic importance of rain in this desert country.)",
@@ -419,6 +466,66 @@
 })();
 "use strict";
 
+;(function () {
+
+  var getPage = function getPage(hash, lessonsObject) {
+    if (!lessonsObject || !lessonsObject.pageMap) {
+      return false;
+    }
+    if (!lessonsObject.pageMap[hash]) {
+      return false;
+    }
+
+    return lessonsObject.pageMap[hash];
+  };
+
+  var loadRoute = function loadRoute(hash, jumpToExercise) {
+    Mousetrap.reset();
+
+    var page = getPage(hash, App.lessons);
+
+    $(".main").html(App.templates.page(page));
+
+    $(".page-content").html(App.templates[page.template](page));
+
+    if (!page.lesson) {
+      return;
+    }
+
+    cueboard(".instruction-cueboard-container", {
+      initialKeyState: "inactive",
+      keyState: {
+        learned: page.keys.active,
+        "new": page.keys["new"]
+      }
+    });
+
+    if (jumpToExercise) {
+      $(".page-container").addClass("exercise");
+      App.startLesson(page);
+      return;
+    }
+
+    $(".start-exercise-button").addClass("active").on("click", function () {
+      $(".page-container").addClass("exercise");
+      App.startLesson(page);
+    });
+  };
+
+  var PackageDefinition = loadRoute;
+  var PackageName = "loadRoute";
+
+  if ("undefined" !== typeof exports) module.exports = PackageDefinition;else if ("function" === typeof define && define.amd) {
+    define(PackageName, function () {
+      return PackageDefinition;
+    });
+  } else {
+    window.App = window.App || {};
+    window.App[PackageName] = PackageDefinition;
+  }
+})();
+"use strict";
+
 var forEach = function forEach(array, iterator, context) {
   for (var i = 0; i < array.length; i++) {
     iterator.call(context, array[i], i);
@@ -451,134 +558,8 @@ var getHash = function getHash(loc) {
   return splitHash[1] || "";
 };
 
-var getPage = function getPage(hash, lessonsObject) {
-  if (!lessonsObject || !lessonsObject.pageMap) {
-    return false;
-  }
-  if (!lessonsObject.pageMap[hash]) {
-    return false;
-  }
-
-  return lessonsObject.pageMap[hash];
-};
-
-var pageRoute = function pageRoute(hash) {
-  Mousetrap.reset();
-
-  var page = getPage(hash, App.lessons);
-
-  $(".main").html(App.templates.page(page));
-
-  $(".page-content").html(App.templates[page.template](page));
-
-  if (!page.lesson) {
-    return;
-  }
-
-  $(".start-exercise-button").addClass("active").on("click", function () {
-    $(".page-container").addClass("exercise");
-  });
-
-  cueboard(".instruction-cueboard-container", {
-    initialKeyState: "inactive",
-    keyState: {
-      learned: page.keys.active,
-      "new": page.keys["new"]
-    }
-  });
-
-  var cb = cueboard(".exercise-cueboard-container", {
-    initialKeyState: "inactive",
-    keyState: {
-      active: page.keys.active || []
-    }
-  });
-
-  var tb = typebox(".typebox-container", {
-    string: page.text
-  });
-
-  var sc = scorecenter(".scorecenter-container", {
-    refresh: 250,
-    metrics: [{
-      name: "characters",
-      type: "counter"
-    }, {
-      name: "errors",
-      type: "counter"
-    }, {
-      name: "clock",
-      type: "timer"
-    }, {
-      name: "words",
-      type: "counter"
-    }],
-    displays: [{
-      title: "Characters",
-      metric: "characters"
-    }, {
-      title: "Errors",
-      metric: "errors"
-    }, {
-      title: "Accuracy",
-      format: function format(value) {
-        return Math.round(value * 1000) / 10 + "%";
-      },
-      value: function value(map) {
-        var characters = map.characters.value();
-        var errors = map.errors.value();
-        return characters / (characters + errors || 1);
-      }
-    }, {
-      title: "Words Per Minute",
-      format: function format(value) {
-        return Math.round(value * 10) / 10;
-      },
-      value: function value(map) {
-        var words = map.words.value();
-        var clock = map.clock.value();
-
-        return words / ((clock || 1) / 60000);
-      }
-    }]
-  });
-
-  var state = tb.state();
-  if (state.next) {
-    cb.changeState("next", state.next);
-  }
-
-  Mousetrap.bind(keys, function (evt, key) {
-    sc.getMetric("clock").start();
-    var result = tb.applyCharacter(key);
-
-    if (result.accurate === true) {
-      sc.getMetric("characters").increment();
-      cb.changeState("active", key);
-
-      if (result.next) {
-        cb.changeState("next", result.next);
-      }
-
-      if (result.next === " " || result.complete) {
-        sc.getMetric("words").increment();
-      }
-    }
-
-    if (result.accurate === false) {
-      sc.getMetric("errors").increment();
-    }
-
-    if (result.complete) {
-      finishLesson(page, sc);
-    }
-
-    return evt.altKey || evt.metaKey || evt.ctrlKey;
-  });
-};
-
 var loadIntro = function loadIntro() {
-  pageRoute("introduction");
+  App.loadRoute("introduction");
 };
 
 var onHashChange = function onHashChange() {
@@ -588,48 +569,7 @@ var onHashChange = function onHashChange() {
     return loadIntro();
   }
 
-  return pageRoute(hash);
-};
-
-var finishLesson = function finishLesson(page, sc) {
-  sc.getMetric("clock").stop();
-  sc.stop();
-  sc.refresh();
-
-  var wpm = sc.getMetric("words").value() / sc.getMetric("clock").value() * 60000;
-  var accuracy = sc.getMetric("characters").value() / (sc.getMetric("errors").value() + sc.getMetric("characters").value());
-  var completed = wpm >= 20 && sc.getMetric("errors").value() <= 5;
-
-  var lesson = App.tutorialState.markLesson(page.hash, {
-    completed: completed,
-    wpm: wpm,
-    accuracy: accuracy
-  });
-
-  reloadSidebar();
-
-  $(".overlay-container").html(App.templates.overlay({
-    hash: page.hash,
-    next: page.next,
-    completed: completed,
-    inaccurate: accuracy < .95,
-    accuracy: {
-      average: lesson.average.accuracy,
-      best: lesson.iterations.sort(function (a, b) {
-        return b.accuracy - a.accuracy;
-      }).slice(0, 5)
-    },
-    wpm: {
-      average: lesson.average.wpm,
-      best: lesson.iterations.sort(function (a, b) {
-        return b.wpm - a.wpm;
-      }).slice(0, 5)
-    }
-  })).addClass("active");
-
-  $(".js-overlay-restartbutton").on("click", function () {
-    pageRoute(page.hash);
-  });
+  return App.loadRoute(hash);
 };
 
 var reloadSidebar = function reloadSidebar() {
@@ -683,7 +623,124 @@ $(function () {
   $(".js-sidebar-clearstats").on("click", function () {
     reloadState();
   });
+
+  $("body").removeClass("hideUntilLoaded");
 });
+"use strict";
+
+;(function () {
+
+  var scOptions = function scOptions() {
+    return {
+      refresh: 250,
+      metrics: [{
+        name: "characters",
+        type: "counter"
+      }, {
+        name: "errors",
+        type: "counter"
+      }, {
+        name: "clock",
+        type: "timer"
+      }, {
+        name: "words",
+        type: "counter"
+      }],
+      displays: [{
+        title: "Characters",
+        metric: "characters"
+      }, {
+        title: "Errors",
+        metric: "errors"
+      }, {
+        title: "Accuracy",
+        format: function format(value) {
+          return Math.round(value * 1000) / 10 + "%";
+        },
+        value: function value(map) {
+          var characters = map.characters.value();
+          var errors = map.errors.value();
+          return characters / (characters + errors || 1);
+        }
+      }, {
+        title: "Words Per Minute",
+        format: function format(value) {
+          return Math.round(value * 10) / 10;
+        },
+        value: function value(map) {
+          var words = map.words.value();
+          var clock = map.clock.value();
+
+          return words / ((clock || 1) / 60000);
+        }
+      }]
+    };
+  };
+
+  var startLesson = function startLesson(page) {
+    var cb = cueboard(".exercise-cueboard-container", {
+      initialKeyState: "inactive",
+      keyState: {
+        active: page.keys.active || []
+      }
+    });
+
+    var tb = typebox(".typebox-container", {
+      string: page.text
+    });
+
+    var sc = scorecenter(".scorecenter-container", scOptions());
+
+    var state = tb.state();
+    if (state.next) {
+      cb.changeState("next", state.next);
+    }
+
+    Mousetrap.bind(keys, function (evt, key) {
+      sc.getMetric("clock").start();
+      var result = tb.applyCharacter(key);
+
+      if (result.accurate === true) {
+        sc.getMetric("characters").increment();
+        cb.changeState("active", key);
+
+        if (result.next) {
+          cb.changeState("next", result.next);
+        }
+
+        if (result.next === " " || result.complete) {
+          sc.getMetric("words").increment();
+        }
+      }
+
+      if (result.accurate === false) {
+        sc.getMetric("errors").increment();
+      }
+
+      if (result.complete) {
+        App.finishLesson(page, sc);
+      }
+
+      return evt.altKey || evt.metaKey || evt.ctrlKey;
+    });
+
+    $(".js-overlay-startover").on("click", function () {
+      App.loadRoute(page.hash, true);
+    });
+  };
+
+  var PackageDefinition = startLesson;
+  var PackageName = "startLesson";
+
+  if ("undefined" !== typeof exports) module.exports = PackageDefinition;else if ("function" === typeof define && define.amd) {
+    define(PackageName, function () {
+      return PackageDefinition;
+    });
+  } else {
+    window.App = window.App || {};
+    window.App[PackageName] = PackageDefinition;
+  }
+})();
 "use strict";
 
 ;(function () {
@@ -808,6 +865,122 @@ $(function () {
 })();
 this["App"] = this["App"] || {};
 this["App"]["templates"] = this["App"]["templates"] || {};
+this["App"]["templates"]["overlay"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    return "overlay-complete\n  ";
+},"3":function(container,depth0,helpers,partials,data) {
+    return "overlay-incomplete";
+},"5":function(container,depth0,helpers,partials,data) {
+    return "    <div class=\"overlay-title\">Good work!</div>\n    <div class=\"overlay-content\">\n      <p>You had 5 or fewer errors and typed faster than 20 WPM!</p>\n      <p>Now try the next exercise!</p>\n    </div>\n";
+},"7":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "    <div class=\"overlay-title\">Oh, no!</div>\n    <div class=\"overlay-content\">\n"
+    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.inaccurate : depth0),{"name":"if","hash":{},"fn":container.program(8, data, 0),"inverse":container.program(10, data, 0),"data":data})) != null ? stack1 : "")
+    + "    </div>\n";
+},"8":function(container,depth0,helpers,partials,data) {
+    return "      <p>You had more than 5 errors this time.</p>\n      <p>Try to work on your accuracy! You'll naturally get faster as you practice.</p>\n";
+},"10":function(container,depth0,helpers,partials,data) {
+    return "      <p>You were slower than 20 words per minute.</p>\n      <p>Give this lesson another try and get some more practice!</p>\n";
+},"12":function(container,depth0,helpers,partials,data) {
+    return "  <a class=\"pseudo-button overlay-restartbutton js-overlay-restartbutton\">\n    Restart Lesson\n  </a>\n";
+},"14":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "  <a class=\"pseudo-button overlay-nextbutton js-overlay-nextbutton\" href=\"#!/"
+    + container.escapeExpression(((helper = (helper = helpers.next || (depth0 != null ? depth0.next : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"next","hash":{},"data":data}) : helper)))
+    + "\">\n    Next Lesson\n  </a>\n";
+},"16":function(container,depth0,helpers,partials,data) {
+    var alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
+
+  return "    <div class=\"overlay-statrow\">\n      <div class=\"overlay-statdate\">\n        "
+    + alias3((helpers.humanize || (depth0 && depth0.humanize) || alias2).call(alias1,(depth0 != null ? depth0.date : depth0),{"name":"humanize","hash":{},"data":data}))
+    + "\n      </div>\n      <div class=\"overlay-statvalue\">\n        "
+    + alias3((helpers.percent || (depth0 && depth0.percent) || alias2).call(alias1,(depth0 != null ? depth0.accuracy : depth0),{"name":"percent","hash":{},"data":data}))
+    + "\n      </div>\n    </div>\n";
+},"18":function(container,depth0,helpers,partials,data) {
+    var alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
+
+  return "    <div class=\"overlay-statrow\">\n      <div class=\"overlay-statdate\">\n        "
+    + alias3((helpers.humanize || (depth0 && depth0.humanize) || alias2).call(alias1,(depth0 != null ? depth0.date : depth0),{"name":"humanize","hash":{},"data":data}))
+    + "\n      </div>\n      <div class=\"overlay-statvalue\">\n        "
+    + alias3((helpers.round || (depth0 && depth0.round) || alias2).call(alias1,(depth0 != null ? depth0.wpm : depth0),{"name":"round","hash":{},"data":data}))
+    + "\n      </div>\n    </div>\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
+
+  return "<div class=\"overlay-text\n  "
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.completed : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "")
+    + "\">\n\n"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.completed : depth0),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.program(7, data, 0),"data":data})) != null ? stack1 : "")
+    + "\n"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.hash : depth0),{"name":"if","hash":{},"fn":container.program(12, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.next : depth0),{"name":"if","hash":{},"fn":container.program(14, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</div>\n<div class=\"overlay-stats\">\n  <div class=\"overlay-accuracy overlay-section\">\n    <div class=\"overlay-sectiontitle\">\n      Accuracy\n    </div>\n"
+    + ((stack1 = helpers.each.call(alias1,((stack1 = (depth0 != null ? depth0.accuracy : depth0)) != null ? stack1.best : stack1),{"name":"each","hash":{},"fn":container.program(16, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "    <div class=\"overlay-statrow overlay-statrow-average\">\n      <div class=\"overlay-statdate\">\n        Average\n      </div>\n      <div class=\"overlay-statvalue\">\n        "
+    + alias3((helpers.percent || (depth0 && depth0.percent) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.accuracy : depth0)) != null ? stack1.average : stack1),{"name":"percent","hash":{},"data":data}))
+    + "\n      </div>\n    </div>\n  </div>\n  <div class=\"overlay-wpm overlay-section\">\n    <div class=\"overlay-sectiontitle\">\n      Words Per Minute\n    </div>\n"
+    + ((stack1 = helpers.each.call(alias1,((stack1 = (depth0 != null ? depth0.wpm : depth0)) != null ? stack1.best : stack1),{"name":"each","hash":{},"fn":container.program(18, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "    <div class=\"overlay-statrow overlay-statrow-average\">\n      <div class=\"overlay-statdate\">\n        Average\n      </div>\n      <div class=\"overlay-statvalue\">\n        "
+    + alias3((helpers.round || (depth0 && depth0.round) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.wpm : depth0)) != null ? stack1.average : stack1),{"name":"round","hash":{},"data":data}))
+    + "\n      </div>\n    </div>\n  </div>\n</div>";
+},"useData":true});
+this["App"]["templates"]["page"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "    <h2>\n      "
+    + container.escapeExpression(((helper = (helper = helpers.fullTitle || (depth0 != null ? depth0.fullTitle : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"fullTitle","hash":{},"data":data}) : helper)))
+    + "\n    </h2>\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "<div class=\"page-container\">\n\n  <div class=\"instruction-container\">\n    <div class=\"page-content\">\n    </div>\n\n    <button class=\"start-exercise-button\">\n      Start Exercise\n    </button>\n  </div>\n\n  <div class=\"exercise-container\">\n"
+    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.fullTitle : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "\n    <div class=\"scorecenter-container\">\n    </div>\n\n    <div class=\"controls-container\">\n      <div class=\"typebox-container\">\n      </div>\n\n      <div class=\"exercise-cueboard-container\">\n      </div>\n\n      <div class=\"startover-container\">\n        <button class=\"pseudo-button overlay-startover js-overlay-startover\">\n          Restart Exercise\n        </button>\n      </div>\n\n      <div class=\"overlay-container\">\n      </div>\n    </div>\n  </div>\n\n</div>";
+},"useData":true});
+this["App"]["templates"]["sidebar"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=depth0 != null ? depth0 : {};
+
+  return "  <div class=\"sidebar-section\">\n"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.title : depth0),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "    \n"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.pages : depth0),{"name":"each","hash":{},"fn":container.program(4, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "  </div>\n";
+},"2":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "    <div class=\"sidebar-sectiontitle\">"
+    + container.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"title","hash":{},"data":data}) : helper)))
+    + "</div>\n";
+},"4":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "    <div class=\"sidebar-page\">\n"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.lesson : depth0),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "      <a class=\"sidebar-pagelink\" href=\"#!/"
+    + alias4(((helper = (helper = helpers.hash || (depth0 != null ? depth0.hash : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"hash","hash":{},"data":data}) : helper)))
+    + "\">\n        "
+    + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
+    + "\n      </a>\n    </div>\n";
+},"5":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=depth0 != null ? depth0 : {};
+
+  return "      <div class=\"sidebar-status \n        "
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = ((stack1 = (depth0 != null ? depth0.state : depth0)) != null ? stack1.status : stack1)) != null ? stack1.started : stack1),{"name":"if","hash":{},"fn":container.program(6, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "\n        "
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = ((stack1 = (depth0 != null ? depth0.state : depth0)) != null ? stack1.status : stack1)) != null ? stack1.completed : stack1),{"name":"if","hash":{},"fn":container.program(8, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "\">\n      </div>\n";
+},"6":function(container,depth0,helpers,partials,data) {
+    return "sidebar-status-started";
+},"8":function(container,depth0,helpers,partials,data) {
+    return "sidebar-status-completed";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "<div class=\"sidebar-container\">\n"
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.sections : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</div>";
+},"useData":true});
 this["App"]["templates"]["advanced-lesson-1"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<h2 class=\"page-title\">\n  Advanced Lesson #1: ( and )\n</h2>\n\n<p>\n  An important part of word processing is the use of parenthesis. \n  These are also \"secondary\" or modified keys, so to type \n  parenthesis you will need to be holding down the <strong>shift</strong> \n  key with the <strong>left pinky</strong>. The \n  <strong>opening parenthesis</strong> is typed by reaching the \n  <strong>right ring finger</strong> up 2 rows. The \n  <strong>closing parenthesis</strong> is typed by reaching the \n  </strong>right pinky</strong> up 2 rows.\n</p>\n\n<div class=\"instruction-cueboard-container\"></div>\n\n<p>\n  This will be tricky, but is very useful once you master it!\n</p>";
 },"useData":true});
@@ -898,120 +1071,4 @@ this["App"]["templates"]["resources"] = Handlebars.template({"compiler":[7,">= 4
 },"useData":true});
 this["App"]["templates"]["using-the-tutorial"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<h2 class=\"page-title\">\n  Using the Tutorial\n</h2>\n\n<p>\n  The Byte Back Typing Tutorial is easy to use! After reading \n  this guide, start with <a href=\"#!/lesson-1\">Lesson #1</a> and \n  complete all 15 lessons in order.\n</p>\n\n<p>\n  Make sure that when you are doing the exercises, you can see \n  the exercise, the keyboard, and the statistics!\n</p>\n\n<div class=\"page-featureimage\">\n  <img src=\"dist/img/howtouse.jpg\" />\n</div>\n\n<ol>\n  <li>\n    <strong>The Exercise:</strong> The exercise is the top section\n    of text. This is the text that you type in each exercise. \n    When you open an exercise, the first letter should be black \n    and underlined. The timer and WPM counter will start when you \n    begin typing.\n    <ul>\n      <li>\n        Watch out for spaces. Any characters other than a space \n        for spaces count as normal errors.\n      </li>\n    </ul>\n  </li>\n  <li>\n    <strong>The Keyboard:</strong> The keyboard can help you \n    avoid looking at your hands. The current letter you need to \n    type will be in yellow. If you type a wrong letter, it will \n    show you what you typed in red. If nothing is showing and \n    the exercise is not over, you are probably on a space.\n  </li>\n  <li>\n    <strong>The Statistics:</strong> The statistics are just under \n    the keyboard. <strong>Characters</strong> tells you how many \n    keystrokes you have typed so far, <strong>errors</strong> tracks \n    the number of incorrect keystrokes, <strong>WPM</strong> tells \n    you how many words per minute you are typing, and \n    <strong>time</strong> tracks how long the exercise has taken you.\n    <ul>\n      <li>\n        Aim to get fewer than five errors and more than 20 WPM for \n        each exercise. Expect that you will have to do each exercise \n        multiple times to reach this goal.\n      </li>\n    </ul>\n  </li>\n  <li>\n    <strong>Restart Exercise:</strong> If you need to do the \n    exercise again, you can click the \"Restart Exercise\" button to \n    reload the page and its exercise. When you are ready to move on, \n    select the next lesson in the navigation menu.\n  </li>\n</ol>";
-},"useData":true});
-this["App"]["templates"]["overlay"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
-    return "overlay-complete\n  ";
-},"3":function(container,depth0,helpers,partials,data) {
-    return "overlay-incomplete";
-},"5":function(container,depth0,helpers,partials,data) {
-    return "    <div class=\"overlay-title\">Good work!</div>\n    <div class=\"overlay-content\">\n      <p>You had fewer than 5 errors and typed faster than 20 WPM!</p>\n      <p>Now try the next exercise!</p>\n    </div>\n";
-},"7":function(container,depth0,helpers,partials,data) {
-    var stack1;
-
-  return "    <div class=\"overlay-title\">Oh, no!</div>\n    <div class=\"overlay-content\">\n"
-    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.inaccurate : depth0),{"name":"if","hash":{},"fn":container.program(8, data, 0),"inverse":container.program(10, data, 0),"data":data})) != null ? stack1 : "")
-    + "    </div>\n";
-},"8":function(container,depth0,helpers,partials,data) {
-    return "      <p>You had more than 5 errors this time.</p>\n      <p>Try to work on your accuracy! You'll naturally get faster as you practice.</p>\n";
-},"10":function(container,depth0,helpers,partials,data) {
-    return "      <p>You were slower than 20 words per minute.</p>\n      <p>Give this lesson another try and get some more practice!</p>\n";
-},"12":function(container,depth0,helpers,partials,data) {
-    return "  <a class=\"pseudo-button overlay-restartbutton js-overlay-restartbutton\">\n    Restart Lesson\n  </a>\n";
-},"14":function(container,depth0,helpers,partials,data) {
-    var helper;
-
-  return "  <a class=\"pseudo-button overlay-nextbutton js-overlay-nextbutton\" href=\"#!/"
-    + container.escapeExpression(((helper = (helper = helpers.next || (depth0 != null ? depth0.next : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"next","hash":{},"data":data}) : helper)))
-    + "\">\n    Next Lesson\n  </a>\n";
-},"16":function(container,depth0,helpers,partials,data) {
-    var alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
-
-  return "    <div class=\"overlay-statrow\">\n      <div class=\"overlay-statdate\">\n        "
-    + alias3((helpers.humanize || (depth0 && depth0.humanize) || alias2).call(alias1,(depth0 != null ? depth0.date : depth0),{"name":"humanize","hash":{},"data":data}))
-    + "\n      </div>\n      <div class=\"overlay-statvalue\">\n        "
-    + alias3((helpers.percent || (depth0 && depth0.percent) || alias2).call(alias1,(depth0 != null ? depth0.accuracy : depth0),{"name":"percent","hash":{},"data":data}))
-    + "\n      </div>\n    </div>\n";
-},"18":function(container,depth0,helpers,partials,data) {
-    var alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
-
-  return "    <div class=\"overlay-statrow\">\n      <div class=\"overlay-statdate\">\n        "
-    + alias3((helpers.humanize || (depth0 && depth0.humanize) || alias2).call(alias1,(depth0 != null ? depth0.date : depth0),{"name":"humanize","hash":{},"data":data}))
-    + "\n      </div>\n      <div class=\"overlay-statvalue\">\n        "
-    + alias3((helpers.round || (depth0 && depth0.round) || alias2).call(alias1,(depth0 != null ? depth0.wpm : depth0),{"name":"round","hash":{},"data":data}))
-    + "\n      </div>\n    </div>\n";
-},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
-
-  return "<div class=\"overlay-text\n  "
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.completed : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "")
-    + "\">\n\n"
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.completed : depth0),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.program(7, data, 0),"data":data})) != null ? stack1 : "")
-    + "\n"
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.hash : depth0),{"name":"if","hash":{},"fn":container.program(12, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.next : depth0),{"name":"if","hash":{},"fn":container.program(14, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</div>\n<div class=\"overlay-stats\">\n  <div class=\"overlay-accuracy overlay-section\">\n    <div class=\"overlay-sectiontitle\">\n      Accuracy\n    </div>\n"
-    + ((stack1 = helpers.each.call(alias1,((stack1 = (depth0 != null ? depth0.accuracy : depth0)) != null ? stack1.best : stack1),{"name":"each","hash":{},"fn":container.program(16, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "    <div class=\"overlay-statrow overlay-statrow-average\">\n      <div class=\"overlay-statdate\">\n        Average\n      </div>\n      <div class=\"overlay-statvalue\">\n        "
-    + alias3((helpers.percent || (depth0 && depth0.percent) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.accuracy : depth0)) != null ? stack1.average : stack1),{"name":"percent","hash":{},"data":data}))
-    + "\n      </div>\n    </div>\n  </div>\n  <div class=\"overlay-wpm overlay-section\">\n    <div class=\"overlay-sectiontitle\">\n      Words Per Minute\n    </div>\n"
-    + ((stack1 = helpers.each.call(alias1,((stack1 = (depth0 != null ? depth0.wpm : depth0)) != null ? stack1.best : stack1),{"name":"each","hash":{},"fn":container.program(18, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "    <div class=\"overlay-statrow overlay-statrow-average\">\n      <div class=\"overlay-statdate\">\n        Average\n      </div>\n      <div class=\"overlay-statvalue\">\n        "
-    + alias3((helpers.round || (depth0 && depth0.round) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.wpm : depth0)) != null ? stack1.average : stack1),{"name":"round","hash":{},"data":data}))
-    + "\n      </div>\n    </div>\n  </div>\n</div>";
-},"useData":true});
-this["App"]["templates"]["page"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
-    var helper;
-
-  return "    <h2>\n      "
-    + container.escapeExpression(((helper = (helper = helpers.fullTitle || (depth0 != null ? depth0.fullTitle : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"fullTitle","hash":{},"data":data}) : helper)))
-    + "\n    </h2>\n";
-},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1;
-
-  return "<div class=\"page-container\">\n\n  <div class=\"instruction-container\">\n    <div class=\"page-content\">\n    </div>\n\n    <button class=\"start-exercise-button\">\n      Start Exercise\n    </button>\n  </div>\n\n  <div class=\"exercise-container\">\n"
-    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.fullTitle : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "\n    <div class=\"scorecenter-container\">\n    </div>\n\n    <div class=\"controls-container\">\n      <div class=\"typebox-container\">\n      </div>\n\n      <div class=\"exercise-cueboard-container\">\n      </div>\n\n      <div class=\"overlay-container\">\n      </div>\n    </div>\n  </div>\n\n</div>";
-},"useData":true});
-this["App"]["templates"]["sidebar"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
-    var stack1, alias1=depth0 != null ? depth0 : {};
-
-  return "  <div class=\"sidebar-section\">\n"
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.title : depth0),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "    \n"
-    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.pages : depth0),{"name":"each","hash":{},"fn":container.program(4, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "  </div>\n";
-},"2":function(container,depth0,helpers,partials,data) {
-    var helper;
-
-  return "    <div class=\"sidebar-sectiontitle\">"
-    + container.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"title","hash":{},"data":data}) : helper)))
-    + "</div>\n";
-},"4":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
-
-  return "    <div class=\"sidebar-page\">\n"
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.lesson : depth0),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "      <a class=\"sidebar-pagelink\" href=\"#!/"
-    + alias4(((helper = (helper = helpers.hash || (depth0 != null ? depth0.hash : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"hash","hash":{},"data":data}) : helper)))
-    + "\">\n        "
-    + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "\n      </a>\n    </div>\n";
-},"5":function(container,depth0,helpers,partials,data) {
-    var stack1, alias1=depth0 != null ? depth0 : {};
-
-  return "      <div class=\"sidebar-status \n        "
-    + ((stack1 = helpers["if"].call(alias1,((stack1 = ((stack1 = (depth0 != null ? depth0.state : depth0)) != null ? stack1.status : stack1)) != null ? stack1.started : stack1),{"name":"if","hash":{},"fn":container.program(6, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "\n        "
-    + ((stack1 = helpers["if"].call(alias1,((stack1 = ((stack1 = (depth0 != null ? depth0.state : depth0)) != null ? stack1.status : stack1)) != null ? stack1.completed : stack1),{"name":"if","hash":{},"fn":container.program(8, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "\">\n      </div>\n";
-},"6":function(container,depth0,helpers,partials,data) {
-    return "sidebar-status-started";
-},"8":function(container,depth0,helpers,partials,data) {
-    return "sidebar-status-completed";
-},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1;
-
-  return "<div class=\"sidebar-container\">\n"
-    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.sections : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</div>";
 },"useData":true});
