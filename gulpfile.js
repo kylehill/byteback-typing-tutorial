@@ -31,8 +31,16 @@ gulp.task("babel", function () {
     .pipe(gulp.dest("dist/js"))
 })
 
-gulp.task("concat", ["babel", "templates"], function(){
-  return gulp.src("dist/js/*.js")
+gulp.task("concat-js", ["babel", "templates"], function(){
+  return gulp.src([
+      "libs/jquery/dist/jquery.min.js",
+      "libs/handlebars/handlebars.runtime.min.js",
+      "libs/mousetrap/mousetrap.min.js",
+      "libs/cueboard/dist/js/cueboard.js",
+      "libs/typebox/dist/js/typebox.js",
+      "libs/scorecenter/dist/js/scorecenter.js",
+      "dist/js/*.js"
+    ])
     .pipe(concat("tutorial.js"))
     .pipe(gulp.dest("dist/concat"))
 })
@@ -44,7 +52,12 @@ gulp.task("sass", function(){
 })
 
 gulp.task("concat-css", ["sass"], function(){
-  return gulp.src(['dist/css/index.css', 'dist/css/responsive.css'])
+  return gulp.src([
+      "libs/cueboard/dist/css/cueboard.css",
+      "libs/typebox/dist/css/typebox.css",
+      'dist/css/index.css', 
+      'dist/css/responsive.css'
+    ])
     .pipe(concat("tutorial.css"))
     .pipe(gulp.dest("dist/concat"))
 })
@@ -60,7 +73,7 @@ gulp.task("mocha", function () {
     .on('error', gutil.log);
 })
 
-gulp.task("default", ["mocha", "concat", "concat-css"])
+gulp.task("default", ["mocha", "concat-js", "concat-css"])
 
 gulp.task("watch", function (){
   gulp.watch(["src/**", "test/**"], ["default"]);
