@@ -166,7 +166,10 @@ h2 {
 
 .page-featureimage {
   text-align: center;
-  margin-bottom: 20px; }
+  margin: 20px 0; }
+
+.page-featureimage img {
+  max-width: 100%; }
 
 p {
   margin-bottom: 20px; }
