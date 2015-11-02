@@ -937,7 +937,7 @@ $(function () {
           cb.changeState("next", result.next);
         }
 
-        if (result.next === " " || result.complete) {
+        if (result.next === " " || result.next === "/" || result.next === "-" || result.complete) {
           sc.getMetric("words").increment();
         }
       }
