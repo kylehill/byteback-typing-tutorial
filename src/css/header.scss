@@ -1,0 +1,80 @@
+$color_branding_background: #efefef;
+$color_nav_background: #198CFF;
+
+.header a img {
+  border: none;
+}
+
+.header-branding-content, .header-navigation-content {
+  max-width: 1120px;
+  margin: 0px auto;
+  position: relative;
+}
+
+.header-branding {
+  background: $color_branding_background;
+  width: 100%;
+}
+
+.header-logo {
+  width: 360px;
+  margin-top: 5px;
+}
+
+.header-social {
+  position: absolute;
+  right: 5px;
+  top: 15px;
+}
+
+.header-social-icon {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.header-donate-icon {
+  display: inline-block;
+  margin-right: 20px;
+  margin-left: 30px;
+}
+
+.header-social-icon a img {
+  border-radius: 50%;
+}
+
+.header-social-icon img, .header-donate-icon img {
+  -ms-transition: box-shadow ease 200ms;
+  transition: box-shadow ease 200ms;
+}
+
+.header-donate-icon a:hover img {
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
+}
+
+.header-social-icon a:hover img {
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
+}
+
+.header-navigation {
+  background: $color_nav_background;
+}
+
+.header-navigation-content {
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+.header-navlink {
+  display: inline-block;
+  padding: 10px 20px;
+}
+
+.header-navlink a {
+  color: white;
+  -ms-transition: all ease .2s;
+  transition: all ease .2s;
+}
+
+.header-navlink:hover a {
+  opacity: .8;
+}

@@ -6,8 +6,11 @@
 
 body {
   color: #333333;
-  font-family: "Oxygen", sans-serif;
-  display: table-row; }
+  font-family: "Oxygen", sans-serif; }
+
+.content {
+  display: table-row;
+  width: 100%; }
 
 .hideUntilLoaded {
   display: none; }

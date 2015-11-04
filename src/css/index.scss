@@ -30,7 +30,11 @@ $font_declaration: "Oxygen", sans-serif;
 body {
   color: $color_text;
   font-family: $font_declaration;
+}
+
+.content {
   display: table-row;
+  width: 100%;
 }
 
 .hideUntilLoaded {

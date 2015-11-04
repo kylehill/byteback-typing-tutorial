@@ -56,7 +56,8 @@ gulp.task("concat-css", ["sass"], function(){
       "libs/cueboard/dist/css/cueboard.css",
       "libs/typebox/dist/css/typebox.css",
       'dist/css/index.css', 
-      'dist/css/responsive.css'
+      'dist/css/responsive.css',
+      'dist/css/header.css'
     ])
     .pipe(concat("tutorial.css"))
     .pipe(gulp.dest("dist/concat"))

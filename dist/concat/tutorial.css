@@ -86,8 +86,11 @@
 
 body {
   color: #333333;
-  font-family: "Oxygen", sans-serif;
-  display: table-row; }
+  font-family: "Oxygen", sans-serif; }
+
+.content {
+  display: table-row;
+  width: 100%; }
 
 .hideUntilLoaded {
   display: none; }
@@ -475,3 +478,65 @@ li {
     width: 890px; }
   .cueboard, .cueboard * {
     font-size: 16px; } }
+
+.header a img {
+  border: none; }
+
+.header-branding-content, .header-navigation-content {
+  max-width: 1120px;
+  margin: 0px auto;
+  position: relative; }
+
+.header-branding {
+  background: #efefef;
+  width: 100%; }
+
+.header-logo {
+  width: 360px;
+  margin-top: 5px; }
+
+.header-social {
+  position: absolute;
+  right: 5px;
+  top: 15px; }
+
+.header-social-icon {
+  display: inline-block;
+  margin-right: 10px; }
+
+.header-donate-icon {
+  display: inline-block;
+  margin-right: 20px;
+  margin-left: 30px; }
+
+.header-social-icon a img {
+  border-radius: 50%; }
+
+.header-social-icon img, .header-donate-icon img {
+  -ms-transition: box-shadow ease 200ms;
+  transition: box-shadow ease 200ms; }
+
+.header-donate-icon a:hover img {
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); }
+
+.header-social-icon a:hover img {
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); }
+
+.header-navigation {
+  background: #198CFF; }
+
+.header-navigation-content {
+  overflow-x: hidden;
+  white-space: nowrap; }
+
+.header-navlink {
+  display: inline-block;
+  padding: 10px 20px; }
+
+.header-navlink a {
+  color: white;
+  -ms-transition: all ease 0.2s;
+  transition: all ease 0.2s; }
+
+.header-navlink:hover a {
+  opacity: .8; }

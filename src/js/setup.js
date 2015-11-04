@@ -95,6 +95,8 @@ $(function(){
     reloadState()
   })
 
+  $(".header").html(App.templates.header())
+
   $("body").removeClass("hideUntilLoaded")
   
 })
